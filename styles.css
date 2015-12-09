@@ -1,0 +1,38 @@
+#userBody {
+	background-image: url('https://foodtolive.com/wp-content/uploads/2015/10/Seasonal-Vegetables.jpg')
+}
+
+.centeredText {
+	text-align: center;
+}
+
+.leftText {
+	text-align: left;
+}
+
+#centerfold {
+	background-color: white;
+	padding: 40px;
+	height: 100vh;
+}
+
+#userForm {
+	background-color: white;
+	padding: 40px;
+	height: 100vh;
+}
+
+#totalDisplay {
+	background-color: white;
+	padding: 40px;
+	height: 100vh;
+}
+
+.makeBlue {
+	background-color: #23293F;
+	border-color: white;
+}
+
+* {
+	font-family: 'Cinzel', serif;
+}
