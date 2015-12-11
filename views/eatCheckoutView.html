@@ -1,1 +1,26 @@
 <h1 class="centeredText">Checkout</h1>
+
+<!-- stripe button -->
+<form method="POST">
+  <button ng-click= 'confirm()' href="#/">Reserve that dish!!!</button>
+</form>
+<!-- meal summary that hovers above purchase button -->
+<div id="dishSelInfo">
+	<table>
+		<colgroup>
+    	<col id="myCol" span="1" style="background-color:red">
+    <col style="background-color:yellow">
+  </colgroup>
+  <tr>
+    <th>MealName</th>
+    <th>Servings</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td>{{input1}}Name</td>
+    <td>{{input2}}Serv</td>
+    <td>{{input3}}Price</td>
+  </tr>
+
+	</table>
+</div>

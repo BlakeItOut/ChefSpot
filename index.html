@@ -9,12 +9,14 @@
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display|Cinzel:700' rel='stylesheet' type='text/css'>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
   </head>
   <body id="userBody">
-  <div ng-controller="mainCTRL">
+  <div ng-controller= "mainCTRL">
+  
     <div class="col-md-3"></div>
     <div id="centerfold" class="col-xs-12 col-md-6">
-      <uib-tabset justified="true">
+      <uib-tabset justified="false">
         <uib-tab heading="Cooks" ng-click = "go('/')"></uib-tab>
         <uib-tab heading="Menu" ng-click = "go('/menu')"></uib-tab>
         <uib-tab heading="Checkout" ng-click = "go('/checkout')"></uib-tab>
