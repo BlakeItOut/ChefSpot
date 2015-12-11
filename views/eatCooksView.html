@@ -1,5 +1,5 @@
-<div  ng-controller="eatCooksCTRL">
-    <span id="map"></span>
+<div id='mapContainer' ng-controller="eatCooksCTRL">
+    <div id="map"></div>
     <h4> Chefs:<h4>
     <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
          <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
