@@ -474,8 +474,11 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
 
   $scope.ok = function () {
     $uibModalInstance.close($scope.selected.item);
-  };
 
+    console.log($( "#eatSide" ).get( 0 ));
+    $( "#eatSide" ).removeClass("ng-hide");
+  };
+});
 
 app.factory('passUser', function(){
   var userInfo= {};
