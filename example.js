@@ -40,6 +40,8 @@ app.controller('mainCTRL', function ($scope, $sce, $location) {
   $scope.anything = "text";
 })
 
+
+
 app.controller('eatUserProfileCTRL', function ($scope, $sce) {
   $scope.cuisines = [
     {name: 'American', chosen: false},
@@ -273,6 +275,26 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
         }
       }
     });
+    $scope.close = function (size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent2.html',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
 
     modalInstance.result.then(function (selectedItem) {
       $scope.selected = selectedItem;
