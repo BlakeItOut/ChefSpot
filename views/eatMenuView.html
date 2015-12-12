@@ -1,18 +1,61 @@
 <h1 class="centeredText">Menu</h1>
+<div id="menuContainer">
+	<div class="dishContainer">
+		<div class="row">
+			<div class="col-xs-4 col-md-4">
+				<h3>Option 1</h3>
+			</div>
+			<div class="col-xs-4 col-md-4">
+				<h3>Option 2</h3>
+			</div>
+			<div class="col-xs-4 col-md-4">
+				<h3>Option 3</h3>
+			</div>
+		</div>
+		<br>
+		<div class="row btn-group">
+			<div class="col-xs-4 col-md-4">
+				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'"><img src="http://cookdiary.net/wp-content/uploads/images/Chicken-Biryani.jpg" alt="Dish 1" class="dishPics"></label>
+			</div>
+			<div class="col-xs-4 col-md-4">
+				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'"><img src="https://i.ytimg.com/vi/FqlsG8cptE8/maxresdefault.jpg" alt="Dish 1" class="dishPics"></label>
+			</div>
+			<div class="col-xs-4 col-md-4">
+				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'"><img src="https://thisfragiletent.files.wordpress.com/2009/11/curry.jpg" alt="Dish 1" class="dishPics"></label>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-xs-4 col-md-4">
+				Servings: <input type="number">
+			</div>
+			<div class="col-xs-4 col-md-4">
+				Servings: <input type="number">
+			</div>
+			<div class="col-xs-4 col-md-4">
+				Servings: <input type="number">
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-4 col-md-4">
+				Dish 1
+			</div>
+			<div class="col-xs-4 col-md-4">
+				Dish 2
+			</div>
+			<div class="col-xs-4 col-md-4">
+				Dish 3
+			</div>
+		</div>		
+	</div>
+</div>
 <br>
-<div class="col">
-<button>&lt;Dish 1></button>
-<br><br><br>
-<div class="col">
-<button>&lt;Dish 2></button>
-<br><br><br>
-<div class="col">
-<button class="hover">&lt;Dish 3></button>
-<form action="#/checkout">
+<!-- <form action="#/checkout">
 	<input type = 'text' ng-model = 'input1'>
 	<input type = 'text' ng-model = 'input2'>
 	<input type = 'text' ng-model = 'input3'>
 	<input type = 'submit' value = 'Submit' ng-click='submitter()'/>
-</form>
-</div>
-<br><br><br>
+</form> -->
+

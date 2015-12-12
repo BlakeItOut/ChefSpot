@@ -22,10 +22,12 @@
 	height: 100vh;
 }
 
-#totalDisplay {
-	background-color: white;
-	padding: 40px;
-	height: 100vh;
+.dishContainer input {
+  width: 100px;
+}
+
+.dishContainer {
+  text-align: center;
 }
 
 .makeBlue {
@@ -36,56 +38,12 @@
 * {
 	font-family: 'Cinzel', serif;
 }
-/*@import "compass/css3";*/
 
-/*button, .button, input[type=submit] {
-  border: 0;
-  background: #5786c1;
-  color: white;
-  padding: 8px 14px;
-  font-weight: bold;
-  font-size: 18px;
-  text-decoration: none;
-  display: inline-block; 
-  position: relative;
-	box-shadow: 1px 0px #3a587f, 0px 1px #4171ae,
-              2px 1px #3a587f, 1px 2px #4171ae,
-              3px 2px #3a587f, 2px 3px #4171ae,
-              4px 3px #3a587f, 3px 4px #4171ae,
-              5px 4px #3a587f, 4px 5px #4171ae,
-              6px 5px #3a587f, 5px 6px #4171ae;
-	&:hover, &:focus,
-  &.hover, &.focus {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 0px #3a587f, 0px 1px #4171ae,
-              2px 1px #3a587f, 1px 2px #4171ae,
-              3px 2px #3a587f, 2px 3px #4171ae,
-              4px 3px #3a587f, 3px 4px #4171ae;
-  }
-  &:active,
-  &.active {
-   	transform: translate(4px, 4px);
-    box-shadow: 1px 0px #3a587f, 0px 1px #4171ae,
-              2px 1px #3a587f, 1px 2px #4171ae;
-  }
-}*/
-
-/*body {
-  padding: 50px; 
-  background: lightblue;
-}*/
-/*.col {
-  width: 160px;
-  float: left;
-}*/
-/*form{
-  position: fixed;
-  padding: 80px;
-  top: 75%;
-  width: 8em;
-  margin-top: -2.5em;
-}*/
-
+.dishPics {
+  max-height:100%;
+  max-width:100%;
+  border: 5px solid black;
+}
 table, th, td {
     border: 1px solid black;
 }
@@ -129,15 +87,7 @@ ul {
     padding: 0;
     margin: 0;
 }
-li {
-    float: left;
-    border: 1px solid #000;
-    border-bottom-width: 0;
-    margin: 3px 3px 0px 3px;
-    padding: 5px 5px 0px 5px;
-    background-color: black;
-    color: #696969;
-}
+
 #mainView {
     border: 1px solid black;
 	clear: both;
@@ -148,3 +98,4 @@ li {
     background-color: #FFF;
     color: #000;
 }
+

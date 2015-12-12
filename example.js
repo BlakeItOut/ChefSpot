@@ -174,6 +174,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
 app.controller('eatMenuCTRL', function ($scope, $sce, checkoutFCTRL) {
   $scope.submitter= function(){
       checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3);}
+  $scope.radioModel = 'middle';
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
