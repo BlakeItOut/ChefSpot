@@ -28,13 +28,13 @@
 		<br>
 		<div class="row">
 			<div class="col-xs-4 col-md-4">
-				Servings: <input type="number">
+				Servings: <input ng-model="Servings1"type="number">
 			</div>
 			<div class="col-xs-4 col-md-4">
-				Servings: <input type="number">
+				Servings: <input ng-model="Servings2" type="number">
 			</div>
 			<div class="col-xs-4 col-md-4">
-				Servings: <input type="number">
+				Servings: <input ng-model="Servings3"type="number">
 			</div>
 		</div>
 		<br>
@@ -53,10 +53,7 @@
 </div>
 <br>
 {{radioModel || 'null'}}
-<!-- <form action="#/checkout">
-	<input type = 'text' ng-model = 'input1'>
-	<input type = 'text' ng-model = 'input2'>
-	<input type = 'text' ng-model = 'input3'>
+<form action="#/checkout">
 	<input type = 'submit' value = 'Submit' ng-click='submitter()'/>
-</form> -->
+</form>
 

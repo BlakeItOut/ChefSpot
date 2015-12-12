@@ -173,50 +173,68 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
     
   });
 
-app.controller('eatMenuCTRL', function ($scope, $sce, checkoutFCTRL) {
+app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL) {
   $scope.submitter= function(){
+      if ($scope.radioModel === "Option 1") {
+        $scope.input1 = $scope.chef.menu.dish1.displayName
+        $scope.input2 = $scope.Servings1;
+        $scope.input3 = $scope.chef.menu.dish1.costPerServing*$scope.Servings1;   
+      } else if ($scope.radioModel === "Option 2") {
+        $scope.input1 = $scope.chef.menu.dish2.displayName
+        $scope.input2 = $scope.Servings2;
+        $scope.input3 = $scope.chef.menu.dish2.costPerServing*$scope.Servings2  
+      } else if ($scope.radioModel === "Option 3") {
+        $scope.input1 = $scope.chef.menu.dish3.displayName
+        $scope.input2 = $scope.Servings3;
+        $scope.input3 = $scope.chef.menu.dish3.costPerServing*$scope.Servings3;
+      }
+      console.log($scope.input1);
+      console.log($scope.input2);
+      console.log($scope.input3);
       checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3);
+      $location.path( '/checkout' );
   }
 
-// function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
-//   this.cookID = id;
-//   this.firstName = first;
-//   this.lastName = last;
-//   this.email = email;
-//   this.phoneNumber = phoneNumber;
-//   this.lattitude = lattitude;
-//   this.longitude = longitude
-//   this.menu = menu;
-//   this.mainCuisine = mainCusine;
-// }
+function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
+  this.cookID = cookID;
+  this.firstName = first;
+  this.lastName = last;
+  this.email = email;
+  this.phoneNumber = phoneNumber;
+  this.lattitude = lattitude;
+  this.longitude = longitude
+  this.menu = menu;
+  this.mainCuisine = mainCusine;
+}
 
-// function menu(dish1, dish2, dish3) {
-//   this.dish1 = dish1;
-//   this.dish2 = dish2;
-//   this.dish3 = dish3;
-// }
+function menu(dish1, dish2, dish3) {
+  this.dish1 = dish1;
+  this.dish2 = dish2;
+  this.dish3 = dish3;
+}
 
-// function dish(displayName, costPerServing, ingredients, maxServings, cusineType) {
-//   this.displayName = name;
-//   this.costPerServing = costPerServing;
-//   this.ingredients = ingredients;
-//   this.maxServings = maxServings;
-//   this.cuisineType = cuisineType;
-// }
+function dish(displayName, costPerServing, ingredients, maxServings, cuisineType) {
+  this.displayName = displayName;
+  this.costPerServing = costPerServing;
+  this.ingredients = ingredients;
+  this.maxServings = maxServings;
+  this.cuisineType = cuisineType;
+}
 
-// $scope.chickenBriyani = new dish("Chicken Briyani", 8, ["Chicken", "Rice", "Curry"], 4, "Pakistani");
-// $scope.spinichPaneer = new dish("Spinich Paneer", 6, ["Spinich", "Crepe"], 6, "Indian");
-// $scope.chanaMasala = new dish("Chana Masala", 7, ["Curry", "Meat", "Chickpeas"], 8, "Indian");
+$scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani");
+$scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian");
+$scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian");
 
-// $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
+$scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
 
-// $scope.shay = new cook(000000001, "Shay", "Knushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+$scope.shay = new cook(1000000001, "Shay", "Knushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
 
+$scope.chef = $scope.shay
+console.log($scope.shay)
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
     $scope.checkoutFCTRL= checkoutFCTRL;
-    debugger
     $scope.input1= checkoutFCTRL.input1;
     $scope.input2= checkoutFCTRL.input2;
     $scope.input3= checkoutFCTRL.input3;
@@ -250,7 +268,7 @@ app.factory('checkoutFCTRL', function(){
         this.input2 = input2;
         this.input3 = input3;
       }
-      return pmntInfoCont;
+  return pmntInfoCont;
 });
 
 app.controller('eatPastReservationsCTRL', function ($scope, $sce) {
