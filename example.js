@@ -173,8 +173,43 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
 
 app.controller('eatMenuCTRL', function ($scope, $sce, checkoutFCTRL) {
   $scope.submitter= function(){
-      checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3);}
-  $scope.radioModel = 'middle';
+      checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3);
+  }
+
+// function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
+//   this.cookID = id;
+//   this.firstName = first;
+//   this.lastName = last;
+//   this.email = email;
+//   this.phoneNumber = phoneNumber;
+//   this.lattitude = lattitude;
+//   this.longitude = longitude
+//   this.menu = menu;
+//   this.mainCuisine = mainCusine;
+// }
+
+// function menu(dish1, dish2, dish3) {
+//   this.dish1 = dish1;
+//   this.dish2 = dish2;
+//   this.dish3 = dish3;
+// }
+
+// function dish(displayName, costPerServing, ingredients, maxServings, cusineType) {
+//   this.displayName = name;
+//   this.costPerServing = costPerServing;
+//   this.ingredients = ingredients;
+//   this.maxServings = maxServings;
+//   this.cuisineType = cuisineType;
+// }
+
+// $scope.chickenBriyani = new dish("Chicken Briyani", 8, ["Chicken", "Rice", "Curry"], 4, "Pakistani");
+// $scope.spinichPaneer = new dish("Spinich Paneer", 6, ["Spinich", "Crepe"], 6, "Indian");
+// $scope.chanaMasala = new dish("Chana Masala", 7, ["Curry", "Meat", "Chickpeas"], 8, "Indian");
+
+// $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
+
+// $scope.shay = new cook(000000001, "Shay", "Knushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
@@ -217,4 +252,56 @@ app.factory('checkoutFCTRL', function(){
 });
 
 app.controller('eatPastReservationsCTRL', function ($scope, $sce) {
+});
+
+app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+});
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $uibModalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 });
