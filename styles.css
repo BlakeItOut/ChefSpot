@@ -1,6 +1,4 @@
-#userBody {
-	background: url(../img/intro-bg.jpg);
-}
+/*General*/
 
 .centeredText {
 	text-align: center;
@@ -10,31 +8,56 @@
 	text-align: left;
 }
 
+.rightText {
+  text-align: right;
+}
+
+* {
+  font-family: 'Cinzel', serif;
+}
+
+/*Main eat div*/
 #centerfold {
 	/*background-color: black;*/
-  background-image: url(img/intro-bg.jpg);
+  background-image: url(http://image.made-in-china.com/2f0j00neEaGqkwfNbW/Cooking-Utensils-SYU026-.jpg);
 	padding: 40px;
 	height: auto;
 }
 
 #partialView {
   border-radius: 0px 0px 50px 50px;
-  border: 5px solid white;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   background-color: white;
   padding-left: 40px;
   padding-right: 40px;
-  height: 800px; 
+  height: 800px;
+  color: black; 
 }
 
+/*Eat Cooks View*/
+#map {
+    height:100%;
+    width:100%;
+}
+
+#mapContainer{
+  height:600px;
+  width:100%;
+}
+
+.infoWindowContent {
+    font-size:  14px !important;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    color:black;
+}
+
+/*Eat Menu View*/
 #menuSubmitButton {
   width: 100%;
   height: 50px;
-}
-
-#userForm {
-	background-color: white;
-	padding: 40px;
-	height: 100vh;
 }
 
 .dishContainer input {
@@ -45,41 +68,38 @@
   text-align: center;
 }
 
-.makeBlue {
-	background-color: #23293F;
-	border-color: white;
-}
-
-* {
-	font-family: 'Cinzel', serif;
-}
-
 .dishPics {
   max-height:100%;
   max-width:100%;
   border: 5px solid black;
 }
 
-#map {
-    height:100%;
-    width:100%;
+/*Eat User Profile View*/
+
+#userForm {
+  background-color: white;
+  padding: 40px;
 }
 
-#mapContainer{
-	height:600px;
-	width:100%;
+#userForm input {
+  width: 100%;
 }
 
-.infoWindowContent {
-    font-size:  14px !important;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-    color:black;
+.makeBlue {
+	background-color: #23293F;
+	border-color: white;
 }
-h2 {
+
+/*Eat Checkout View*/
+#checkoutReserveButton {
+  width: 100%;
+}
+
+
+/*h2 {
     margin-bottom:0;
     margin-top: 0;
-}
+}*/
 
 ul {
     list-style: none;
@@ -88,16 +108,10 @@ ul {
 }
 
 #mainView {
-    border: 1px solid black;
+  border: 1px solid black;
 	clear: both;
 	padding: 5px;
 	padding-left: 5px;
 }
 
-#centerfold .disabled {
-  color: white;
-}
 
-#checkoutReserveButton {
-  width: 100%;
-}

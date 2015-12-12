@@ -40,41 +40,6 @@ app.controller('mainCTRL', function ($scope, $sce, $location) {
   $scope.anything = "text";
 })
 
-
-
-app.controller('eatUserProfileCTRL', function ($scope, $sce) {
-  $scope.cuisines = [
-    {name: 'American', chosen: false},
-    {name:'Canadian', chosen: false},
-    {name: 'Cuban', chosen: false},
-    {name: 'French', chosen: false},
-    {name: 'Greek', chosen: false},
-    {name: 'Indian', chosen: false},
-    {name: 'Irish', chosen: false},
-    {name: 'Italian', chosen: false},
-    {name: 'Japanese', chosen: false},
-    {name: 'Mexican', chosen: false},
-    {name: 'Mediterranean', chosen: false},
-    {name: 'Pakistani', chosen: false},
-    {name: 'Seafood', chosen: false},
-    {name: 'Spanish', chosen: false},
-    {name: 'Sushi', chosen: false},
-    {name: 'Thai', chosen: false},
-    {name: 'Vegetarian', chosen: false}
-  ];
-  $scope.checkResults = [];
-
-  $scope.$watch('cuisines', function () {
-    $scope.checkResults = [];
-    angular.forEach($scope.cuisines, function (value, key) {
-      if (value.chosen) {
-        $scope.checkResults.push(value.name);
-      }
-    });
-  }, true);
-
-});
-
 app.controller('eatCooksCTRL', function ($scope, $geolocation, chooseCook) {
     var cookget = function (){
       console.log("Hello");
@@ -183,6 +148,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
   });
 
 app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, chooseCook) {
+  $scope.chefsName = chooseCook.cook1;
   $scope.submitter= function(){
       $scope.input4 = $scope.chef
       if ($scope.radioModel === "Option 1") {
@@ -239,10 +205,17 @@ $scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"
 $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
 
 $scope.shay = new cook(1000000001, "Shay", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+$scope.chefArray = [$scope.shay]
 
-$scope.chef = $scope.shay;
-console.log($scope.shay);
 console.log(chooseCook);
+function setChef () {
+  for(i=0; i<chefArray.length, i++) {
+    if($scope.chefsName === ($scope.chefArray[i].firstName + " " + $scope.chefArray[i].lastName) {
+      $scope.chef = $scope.chefArray[i];
+    }
+  }
+}
+console.log($scope.chef);
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
@@ -276,6 +249,41 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
       }
 });
 
+app.controller('eatUserProfileCTRL', function ($scope, $sce) {
+  $scope.cuisines = [
+    {name: 'American', chosen: false},
+    {name:'Canadian', chosen: false},
+    {name: 'Cuban', chosen: false},
+    {name: 'French', chosen: false},
+    {name: 'Greek', chosen: false},
+    {name: 'Indian', chosen: false},
+    {name: 'Irish', chosen: false},
+    {name: 'Italian', chosen: false},
+    {name: 'Japanese', chosen: false},
+    {name: 'Mexican', chosen: false},
+    {name: 'Mediterranean', chosen: false},
+    {name: 'Pakistani', chosen: false},
+    {name: 'Seafood', chosen: false},
+    {name: 'Spanish', chosen: false},
+    {name: 'Sushi', chosen: false},
+    {name: 'Thai', chosen: false},
+    {name: 'Vegetarian', chosen: false}
+  ];
+  $scope.checkResults = [];
+
+  $scope.$watch('cuisines', function () {
+    $scope.checkResults = [];
+    angular.forEach($scope.cuisines, function (value, key) {
+      if (value.chosen) {
+        $scope.checkResults.push(value.name);
+      }
+    });
+  }, true);
+});
+
+app.controller('eatPastReservationsCTRL', function ($scope, $sce) {
+});
+
 app.factory('checkoutFCTRL', function(){
   var pmntInfoCont= {};
   pmntInfoCont.setData = function(input1, input2, input3, input4){
@@ -293,10 +301,6 @@ app.factory('chooseCook', function(){
         this.cook1 = cook1; 
       }
       return cookName;
-});
-
-
-app.controller('eatPastReservationsCTRL', function ($scope, $sce) {
 });
 
 app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
@@ -349,6 +353,36 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
+
+  $scope.cuisines = [
+    {name: 'American', chosen: false},
+    {name:'Canadian', chosen: false},
+    {name: 'Cuban', chosen: false},
+    {name: 'French', chosen: false},
+    {name: 'Greek', chosen: false},
+    {name: 'Indian', chosen: false},
+    {name: 'Irish', chosen: false},
+    {name: 'Italian', chosen: false},
+    {name: 'Japanese', chosen: false},
+    {name: 'Mexican', chosen: false},
+    {name: 'Mediterranean', chosen: false},
+    {name: 'Pakistani', chosen: false},
+    {name: 'Seafood', chosen: false},
+    {name: 'Spanish', chosen: false},
+    {name: 'Sushi', chosen: false},
+    {name: 'Thai', chosen: false},
+    {name: 'Vegetarian', chosen: false}
+  ];
+  $scope.checkResults = [];
+
+  $scope.$watch('cuisines', function () {
+    $scope.checkResults = [];
+    angular.forEach($scope.cuisines, function (value, key) {
+      if (value.chosen) {
+        $scope.checkResults.push(value.name);
+      }
+    });
+  }, true);
 
 });
 

@@ -93,49 +93,9 @@
                         <h3>Hungry? Hire a Chef!<br>Want to show off your cooking skills and make some money? Be a Chef!</h3>
                         <hr class="intro-divider">
                        <!--  <ul class="list-inline intro-social-buttons"> -->
-    <div ng-controller="ModalDemoCtrl">
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title">New User?</h3> </div>
-        <div class="modal-body">
-        <form id="userForm" role="form">
-      <div class="form-group">
-        <label>First Name: </label>
-        <input type="text" uib-tooltip="People call you this" tooltip-trigger="focus" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Last Name: </label>
-        <input type="text" uib-tooltip="And sometimes add this" tooltip-trigger="focus" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Email: </label>
-        <input type="text" uib-tooltip="You get electronic communications via this method" tooltip-trigger="focus" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Street Address: </label>
-        <input type="text" uib-tooltip="This number and name determine where on what line you reside" tooltip-trigger="focus" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>City: </label>
-        <input type="text" uib-tooltip="In this region" tooltip-trigger="focus" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Zip Code: </label>
-        <input type="text" uib-tooltip="More specifically this region" tooltip-trigger="focus" class="form-control" />
-      </div>
-      <br><h3 class="centeredText">Preferences</h3><br>
-      <div class="form-group centeredText">
-        <label>Cuisine: </label><br>
-        <div ng-repeat="cuisine in cuisines" class="btn-group">
-          <label class="btn btn-primary makeBlue" ng-model="cuisine.chosen" uib-btn-checkbox>{{cuisine.name}}</label> 
-        </div>
-      </div>
-</form>
-            <button class="btn btn-primary" type="button" ng-click="ok()">Sign Up!</button>
-           
-        </div>
-        </script>
-
+<div ng-controller="ModalDemoCtrl">
+    <script type="text/ng-template" src="myModalContent.html"></script>
+</div>
 <div ng-controller="ModalDemoCtrl">
          <script type="text/ng-template" id="myModalContent2.html">
          <div class="modal-header">
