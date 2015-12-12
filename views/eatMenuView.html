@@ -1,59 +1,57 @@
-<h1 class="centeredText">Menu</h1>
 <div id="menuContainer">
 	<div class="dishContainer">
 		<div class="row">
 			<div class="col-xs-4 col-md-4">
-				<h3>Option 1</h3>
+				<h3>{{chef.menu.dish1.displayName}}</h3>
 			</div>
 			<div class="col-xs-4 col-md-4">
-				<h3>Option 2</h3>
+				<h3>{{chef.menu.dish2.displayName}}</h3>
 			</div>
 			<div class="col-xs-4 col-md-4">
-				<h3>Option 3</h3>
+				<h3>{{chef.menu.dish3.displayName}}</h3>
 			</div>
 		</div>
 		<br>
 		<div class="row btn-group">
 			<div class="col-xs-4 col-md-4">
-				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 1'"><img src="http://cookdiary.net/wp-content/uploads/images/Chicken-Biryani.jpg" alt="Dish 1" class="dishPics"></label>
+				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 1'"><img ng-src="{{chef.menu.dish1.picture}}" alt="Dish 1" class="dishPics"></label>
 			</div>
 			<div class="col-xs-4 col-md-4">
-				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 2'"><img src="https://i.ytimg.com/vi/FqlsG8cptE8/maxresdefault.jpg" alt="Dish 1" class="dishPics"></label>
+				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 2'"><img ng-src="{{chef.menu.dish2.picture}}" alt="Dish 1" class="dishPics"></label>
 			</div>
 			<div class="col-xs-4 col-md-4">
-				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 3'"><img src="https://thisfragiletent.files.wordpress.com/2009/11/curry.jpg" alt="Dish 1" class="dishPics"></label>
+				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 3'"><img ng-src="{{chef.menu.dish3.picture}}" alt="Dish 1" class="dishPics"></label>
 			</div>
 		</div>
 		<br>
 		<br>
 		<div class="row">
 			<div class="col-xs-4 col-md-4">
-				Servings: <input ng-model="Servings1"type="number">
+				Servings: <input ng-model="Servings1" type="number">
 			</div>
 			<div class="col-xs-4 col-md-4">
 				Servings: <input ng-model="Servings2" type="number">
 			</div>
 			<div class="col-xs-4 col-md-4">
-				Servings: <input ng-model="Servings3"type="number">
+				Servings: <input ng-model="Servings3" type="number">
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-xs-4 col-md-4">
-				Dish 1
+				{{chef.menu.dish1.displayName}}
 			</div>
 			<div class="col-xs-4 col-md-4">
-				Dish 2
+				{{chef.menu.dish2.displayName}}
 			</div>
 			<div class="col-xs-4 col-md-4">
-				Dish 3
+				{{chef.menu.dish3.displayName}}
 			</div>
 		</div>		
 	</div>
 </div>
 <br>
-{{radioModel || 'null'}}
 <form action="#/checkout">
-	<input type = 'submit' value = 'Submit' ng-click='submitter()'/>
+	<input id = "menuSubmitButton" type = 'submit' value = 'Checkout' ng-click='submitter()'/>
 </form>
 

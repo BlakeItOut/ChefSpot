@@ -173,6 +173,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
 
 app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL) {
   $scope.submitter= function(){
+      $scope.input4 = $scope.chef
       if ($scope.radioModel === "Option 1") {
         $scope.input1 = $scope.chef.menu.dish1.displayName
         $scope.input2 = $scope.Servings1;
@@ -189,7 +190,7 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL) 
       console.log($scope.input1);
       console.log($scope.input2);
       console.log($scope.input3);
-      checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3);
+      checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3, $scope.input4);
       $location.path( '/checkout' );
   }
 
@@ -211,21 +212,22 @@ function menu(dish1, dish2, dish3) {
   this.dish3 = dish3;
 }
 
-function dish(displayName, costPerServing, ingredients, maxServings, cuisineType) {
+function dish(displayName, costPerServing, ingredients, maxServings, cuisineType, picture) {
   this.displayName = displayName;
   this.costPerServing = costPerServing;
   this.ingredients = ingredients;
   this.maxServings = maxServings;
   this.cuisineType = cuisineType;
+  this.picture = picture;
 }
 
-$scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani");
-$scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian");
-$scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian");
+$scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani", "img/chickenBriyani.png");
+$scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian", "img/spinachPaneer.png");
+$scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian", "img/chanaMasala.png");
 
 $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
 
-$scope.shay = new cook(1000000001, "Shay", "Knushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+$scope.shay = new cook(1000000001, "Shay", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
 
 $scope.chef = $scope.shay
 console.log($scope.shay)
@@ -236,6 +238,8 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
     $scope.input1= checkoutFCTRL.input1;
     $scope.input2= checkoutFCTRL.input2;
     $scope.input3= checkoutFCTRL.input3;
+    $scope.chef = checkoutFCTRL.input4;
+    $scope.total = $scope.input3 / 100;
     
     $scope.confirm = function(){
       var handler = StripeCheckout.configure({
@@ -261,10 +265,11 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
 
 app.factory('checkoutFCTRL', function(){
   var pmntInfoCont= {};
-  pmntInfoCont.setData = function(input1, input2, input3){
+  pmntInfoCont.setData = function(input1, input2, input3, input4){
         this.input1 = input1; 
         this.input2 = input2;
         this.input3 = input3;
+        this.input4 = input4;
       }
   return pmntInfoCont;
 });
