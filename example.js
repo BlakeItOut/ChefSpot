@@ -229,8 +229,7 @@ $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.c
 
 $scope.shay = new cook(1000000001, "Shay", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
 
-$scope.chef = $scope.shay
-console.log($scope.shay)
+$scope.chef = $scope.shay;
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
@@ -240,6 +239,7 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
     $scope.input3= checkoutFCTRL.input3;
     $scope.chef = checkoutFCTRL.input4;
     $scope.total = $scope.input3 / 100;
+    console.log($scope.chef);
     
     $scope.confirm = function(){
       var handler = StripeCheckout.configure({
