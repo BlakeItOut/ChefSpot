@@ -264,8 +264,15 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
       }
 });
 
-app.controller('eatUserProfileCTRL', function ($scope, $sce) {
-  $scope.cuisines = [
+app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
+  $scope.eatFirstName = passUser.user.firstName || "";
+  $scope.eatLastName = passUser.user.lastName || "";
+  $scope.eatEmail = passUser.user.email || "";
+  $scope.eatStreetAddress = passUser.user.streetAddress || "";
+  $scope.eatCity = passUser.user.city || "";
+  $scope.eatState = passUser.user.state || "";
+  $scope.eatZipCode = passUser.user.zipCode || "";
+  $scope.cuisines = passUser.user.cuisines || [
     {name: 'American', chosen: false},
     {name:'Canadian', chosen: false},
     {name: 'Cuban', chosen: false},
@@ -294,6 +301,9 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce) {
       }
     });
   }, true);
+  $scope.refresh = function () {
+    console.log(passUser);
+  }
 });
 
 app.controller('eatPastReservationsCTRL', function ($scope, $sce) {
@@ -312,14 +322,6 @@ app.factory('checkoutFCTRL', function(){
 
 app.factory('chooseCook', function(){
   var cookName= {};
-  //while the function has not run or been fired
-    // do{
-    //     console.log()
-
-    //     }
-    //   while(cookget === false);
-
-
   cookName.setData = function(cook1){
         this.cook1 = cook1; 
       }
@@ -377,6 +379,30 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
+  
+
+});
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, passUser) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $scope.userInfo = new user();
+    passUser.setData($scope.userInfo);
+    $uibModalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+
   $scope.cuisines = [
     {name: 'American', chosen: false},
     {name:'Canadian', chosen: false},
@@ -407,23 +433,24 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
     });
   }, true);
 
+  function user() {
+    this.firstName = $scope.eatFirstName;
+    this.lastName = $scope.eatLastName;
+    this.email = $scope.eatEmail;
+    this.streetAddress = $scope.eatStreetAddress;
+    this.city = $scope.eatCity,
+    this.state = $scope.eatState,
+    this.zipCode = $scope.eatZipCode,
+    this.cuisines = $scope.cuisines
+  }
+
+  
 });
 
-// Please note that $modalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
-
-app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
-
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
-
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+app.factory('passUser', function(){
+  var userInfo= {};
+  userInfo.setData = function(user){
+    this.user = user;
+  }
+  return userInfo;
 });
