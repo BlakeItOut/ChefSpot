@@ -209,13 +209,22 @@ $scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"
 
 $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
 
-$scope.shay = new cook(1000000001, "Shay", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
-$scope.chefArray = [$scope.shay]
+$scope.shay = new cook(1000000001, "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+
+$scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/chickenBriyani.png");
+$scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/spinachPaneer.png");
+$scope.venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/chanaMasala.png");
+
+$scope.mickeyMenu = new menu($scope.pasta, $scope.chickenScallopini, $scope.venetoChicken);
+
+$scope.mickey = new cook(1000000001, "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
+
+$scope.chefArray = [$scope.shay, $scope.mickey]
 
 console.log(chooseCook);
 function setChef () {
-  for(i=0; i<chefArray.length, i++) {
-    if($scope.chefsName === ($scope.chefArray[i].firstName + " " + $scope.chefArray[i].lastName) {
+  for(i=0; i<$scope.chefArray.length; i++) {
+    if($scope.chefsName === ($scope.chefArray[i].firstName + " " + $scope.chefArray[i].lastName)) {
       $scope.chef = $scope.chefArray[i];
     }
   }
