@@ -29,9 +29,36 @@ app.config(function($routeProvider) {
     templateUrl: 'views/eatPastReservationsView.html',
     controller: 'eatPastReservationsCTRL'
   });
+
+  $routeProvider.when('/MenuSet', {
+    templateUrl: 'views/cookMenuSetView.html',
+    controller: 'cookMenuSetCTRL'
+  });
+
+  $routeProvider.when('/Availability', {
+    templateUrl: 'views/cookAvailabilityView.html',
+    controller: 'cookAvailabilityCTRL'
+  });
+
+  $routeProvider.when('/CookProf', {
+    templateUrl: 'views/cookCookProfView.html',
+    controller: 'cookCookProfCTRL'
+  });
   
   $routeProvider.otherwise({redirectTo: '/'});
 }); 
+
+app.controller('/cookMenuSetCTRL', function(){
+
+})
+
+app.controller('/cookAvailabilityCTRL', function(){
+
+})
+
+app.controller('/cookCookProfCTRL', function(){
+
+})
 
 app.controller('mainCTRL', function ($scope, $sce, $location) {
   $scope.go = function ( path ) {
@@ -421,6 +448,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) 
 
   $scope.ok = function () {
     $uibModalInstance.close($scope.selected.item);
+    
   };
 
   $scope.cancel = function () {
