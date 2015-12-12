@@ -215,6 +215,7 @@ function setChef () {
     }
   }
 }
+setChef();
 console.log($scope.chef);
 });
 
