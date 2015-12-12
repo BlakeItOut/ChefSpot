@@ -76,10 +76,9 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce) {
 });
 
 app.controller('eatCooksCTRL', function ($scope, $geolocation, chooseCook) {
-    var cookget = function (){
-      console.log("Hello");
-        chooseCook.setData($marker.title);
-        debugger
+    $scope.cookget= function(){
+      // displaying the object at that click
+      console.log("plz");
       } 
 var cooks = [
     {
@@ -141,15 +140,21 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
          // marker.content = '<div class="infoWindowContent">' + info.contact + '</div>';
 
         google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent("<button ng-click='cookget'>" + marker.title + '</button>' + marker.content);
+            var cookTitle = marker.title;
+            chooseCook.setData(cookTitle);
+            infoWindow.setContent("<a href='#/menu' ng-click='cookget()'>" + cookTitle + '</a>' + marker.content);
             infoWindow.open($scope.map, marker);
 
-            console.log(google.maps.event.marker)
+            // console.log(google.maps.event.marker)
         });
-         // var cookget = men();
+          //var cookget = men();
   
-        console.log(createMarker.title);
+        // console.log(createMarker.title);
         
+        // $scope.experiment = function(){
+        //   console.log("anything working whatever");
+        //   chooseCook.setData($marker.title);
+        // };
         // $scope.markers.push(marker);
         
     }
@@ -165,7 +170,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
         google.maps.event.trigger(selectedMarker, 'click');
     }
     $geolocation.watchPosition({
-      timeout: 60000,
+      // timeout: 60000,
       maximumAge: 2,
       enableHighAccuracy: true
     });
@@ -179,7 +184,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
   
     // regular updates
     
-    console.log(cookget);
+    //console.log(cookget);
   });
 
 app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, chooseCook) {
@@ -288,6 +293,14 @@ app.factory('checkoutFCTRL', function(){
 
 app.factory('chooseCook', function(){
   var cookName= {};
+  //while the function has not run or been fired
+    // do{
+    //     console.log()
+
+    //     }
+    //   while(cookget === false);
+
+
   cookName.setData = function(cook1){
         this.cook1 = cook1; 
       }
