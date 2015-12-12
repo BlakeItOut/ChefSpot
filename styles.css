@@ -85,11 +85,12 @@ table, th, td {
     font-size:  14px !important;
     border-top: 1px solid #ccc;
     padding-top: 10px;
+    color:black;
 }
-/*h2 {
+h2 {
     margin-bottom:0;
     margin-top: 0;
-}*/
+}
 
 ul {
     list-style: none;
@@ -108,25 +109,3 @@ ul {
     background-color: #FFF;
     color: #000;
 }
-
-.animate-hide {
-  transition: all linear 0.5s;
-  line-height: 20px;
-  opacity: 1;
-  padding: 10px;
-  border: 1px solid black;
-  background: white;
-}
-
-.animate-hide.ng-hide {
-  line-height: 0;
-  opacity: 0;
-  padding: 0 10px;
-}
-
-.check-element {
-  padding: 10px;
-  border: 1px solid black;
-  background: white;
-}
-

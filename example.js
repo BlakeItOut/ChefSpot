@@ -75,37 +75,40 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce) {
 
 });
 
-app.controller('eatCooksCTRL', function ($scope, $geolocation) {
-    
-var cities = [
+app.controller('eatCooksCTRL', function ($scope, $geolocation, chooseCook) {
+    var cookget = function (){
+      console.log("Hello");
+        chooseCook.setData($marker.title);
+        debugger
+      } 
+var cooks = [
     {
-        city : 'Sheharyar Khushnood',
-        desc : 'Chinese',
-        contact : '330345989',
+        name : 'Sheharyar Khushnood',
+        cuisine : 'Chinese',
         lat : 42.7000,
         long : -83.4000
     },
     {
-        city : 'Blake Shawn',
-        desc : 'Thai',
+        name : 'Blake Shawn',
+        cuisine : 'Thai',
         lat : 42.6700,
         long : -83.9400
     },
     {
-        city : 'Fernando Alonso',
-        desc : 'This is the second best city in the world!',
+        name : 'Fernando Alonso',
+        cuisine : 'Indian',
         lat : 42.8819,
         long : -83.6278
     },
     {
-        city : 'Hernandez Altano',
-        desc : 'This city is live!',
+        name : 'Hernandez Altano',
+        cuisine : 'Italian',
         lat : 42.0500,
         long : -83.2500
     },
     {
-        city : 'Mickey Mouse',
-        desc : 'Sin City...\'nuff said!',
+        name : 'Mickey Mouse',
+        cuisine : 'Mexican',
         lat : 42.0800,
         long : -83.1522
     }
@@ -118,7 +121,6 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
     // basic usage
     $geolocation.getCurrentPosition().then(function(location) {
       $scope.location = location
-      console.log($scope.location);
           $scope.map = new google.maps.Map(document.getElementById('map'),{
     center: {lat:$scope.location.coords.latitude, lng: $scope.location.coords.longitude},
     zoom: 12
@@ -133,22 +135,29 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
         var marker = new google.maps.Marker({
             map: $scope.map,
             position: new google.maps.LatLng(info.lat, info.long),
-            title: info.city
+            title: info.name
         });
-        marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
+        marker.content = '<div class="infoWindowContent">' + info.cuisine + '</div>';
          // marker.content = '<div class="infoWindowContent">' + info.contact + '</div>';
 
         google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            infoWindow.setContent("<button ng-click='cookget'>" + marker.title + '</button>' + marker.content);
             infoWindow.open($scope.map, marker);
+
+            console.log(google.maps.event.marker)
         });
+         // var cookget = men();
+  
+        console.log(createMarker.title);
         
-        $scope.markers.push(marker);
+        // $scope.markers.push(marker);
         
-    }  
+    }
+
     
-    for (i = 0; i < cities.length; i++){
-        createMarker(cities[i]);
+    
+    for (i = 0; i < cooks.length; i++){
+        createMarker(cooks[i]);
     }
 
     $scope.openInfoWindow = function(e, selectedMarker){
@@ -167,13 +176,13 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
        // $scope.lng = Math.round($geolocation.position.coords.longitude);
 
     
-
+  
     // regular updates
     
-    
+    console.log(cookget);
   });
 
-app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL) {
+app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, chooseCook) {
   $scope.submitter= function(){
       if ($scope.radioModel === "Option 1") {
         $scope.input1 = $scope.chef.menu.dish1.displayName
@@ -229,8 +238,9 @@ $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.c
 
 $scope.shay = new cook(1000000001, "Shay", "Knushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
 
-$scope.chef = $scope.shay
-console.log($scope.shay)
+$scope.chef = $scope.shay;
+console.log($scope.shay);
+console.log(chooseCook);
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
@@ -270,6 +280,15 @@ app.factory('checkoutFCTRL', function(){
       }
   return pmntInfoCont;
 });
+
+app.factory('chooseCook', function(){
+  var cookName= {};
+  cookName.setData = function(cook1){
+        this.cook1 = cook1; 
+      }
+      return cookName;
+});
+
 
 app.controller('eatPastReservationsCTRL', function ($scope, $sce) {
 });
