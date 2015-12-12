@@ -209,14 +209,18 @@
 <a name ="services"></a>
 <div ng-controller= "mainCTRL">
     <div id="centerfold" class="col-xs-12 col-md-12">
-      <uib-tabset justified="true">
-        <uib-tab heading="Cooks" ng-click = "go('/')"></uib-tab>
-        <uib-tab heading="Menu" ng-click = "go('/menu')"></uib-tab>
-        <uib-tab heading="Checkout" ng-click = "go('/checkout')"></uib-tab>
-        <uib-tab heading="User Profile" ng-click = "go('/userProfile')"></uib-tab>
-        <uib-tab heading="Past Reservations" ng-click = "go('/pastReservations')"></uib-tab>
-      </uib-tabset>
-      <div id="partialView" ng-view></div>
+        <div class="col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <uib-tabset justified="true">
+                <uib-tab heading="Cooks" ng-click = "go('/')"></uib-tab>
+                <uib-tab heading="Menu" ng-click = "go('/menu')"></uib-tab>
+                <uib-tab heading="Checkout" ng-click = "go('/checkout')"></uib-tab>
+                <uib-tab heading="User Profile" ng-click = "go('/userProfile')"></uib-tab>
+                <uib-tab heading="Past Reservations" ng-click = "go('/pastReservations')"></uib-tab>
+            </uib-tabset>
+            <div id="partialView" ng-view></div>
+        </div>
+        <div class="col-md-1"></div>
     </div>
 </div>
 
