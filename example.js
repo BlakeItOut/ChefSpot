@@ -466,12 +466,19 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
   }
 
 
-  $scope.ok = function () {
+  $scope.okE = function () {
     $scope.userInfo = new user();
     passUser.setData($scope.userInfo);
     $uibModalInstance.close($scope.selected.item);
     console.log($( "#eatSide" ).get( 0 ));
     $( "#eatSide" ).removeClass("ng-hide");
+  };
+  $scope.okC = function () {
+    $scope.userInfo = new user();
+    passUser.setData($scope.userInfo);
+    $uibModalInstance.close($scope.selected.item);
+    console.log($( "#eatSide" ).get( 0 ));
+    $( "#cookSide" ).removeClass("ng-hide");
   };
 });
 
