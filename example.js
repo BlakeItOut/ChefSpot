@@ -420,12 +420,6 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     item: $scope.items[0]
   };
 
-  $scope.ok = function () {
-    $scope.userInfo = new user();
-    passUser.setData($scope.userInfo);
-    $uibModalInstance.close($scope.selected.item);
-  };
-
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
@@ -461,20 +455,21 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
   }, true);
 
   function user() {
-    this.firstName = $scope.eatFirstName;
-    this.lastName = $scope.eatLastName;
-    this.email = $scope.eatEmail;
-    this.streetAddress = $scope.eatStreetAddress;
-    this.city = $scope.eatCity,
-    this.state = $scope.eatState,
-    this.zipCode = $scope.eatZipCode,
-    this.cuisines = $scope.cuisines
+    this.firstName = $scope.eatFirstName || "";
+    this.lastName = $scope.eatLastName || "";
+    this.email = $scope.eatEmail || "";
+    this.streetAddress = $scope.eatStreetAddress || "";
+    this.city = $scope.eatCity || "",
+    this.state = $scope.eatState || "",
+    this.zipCode = $scope.eatZipCode || "",
+    this.cuisines = $scope.cuisine || []
   }
 
 
   $scope.ok = function () {
+    $scope.userInfo = new user();
+    passUser.setData($scope.userInfo);
     $uibModalInstance.close($scope.selected.item);
-
     console.log($( "#eatSide" ).get( 0 ));
     $( "#eatSide" ).removeClass("ng-hide");
   };
