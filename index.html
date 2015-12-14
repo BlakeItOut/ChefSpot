@@ -98,6 +98,7 @@
                        <!--  <ul class="list-inline intro-social-buttons"> -->
 <div ng-controller="ModalDemoCtrl">
     <script type="text/ng-template" src="myModalContent.html"></script>
+    <script type="text/ng-template" src="myModalContentC.html"></script>
 </div>
 <div ng-controller="ModalDemoCtrl">
          <script type="text/ng-template" id="myModalContent2.html">
@@ -119,7 +120,30 @@
       <input type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button ng-click="existingE()" type="submit" class="btn btn-primary">Sign in</button>
+</form>
+        </div>
+    </script>
+    <script type="text/ng-template" id="myModalContent2C.html">
+         <div class="modal-header">
+            <h3 class="modal-title">Existing User?</h3>
+        </div>
+          <div class="modal-body">
+ <form class="form-inline">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword3">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+  </div>
+  <button ng-click="existingC()" type="submit" class="btn btn-primary">Sign in</button>
 </form>
         </div>
     </script>
@@ -135,8 +159,8 @@
         <span class="sr-only">Split button!</span>
       </button>
       <ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-        <li role="menuitem"><a ng-click="open()">New Chef?</a></li>
-        <li role="menuitem"><a ng-click="close()">Existing Chef?</a></li>
+        <li role="menuitem"><a ng-click="openC()">New Chef?</a></li>
+        <li role="menuitem"><a ng-click="closeC()">Existing Chef?</a></li>
       </ul>
     </div>
                             <!-- </li>
@@ -148,8 +172,8 @@
         <span class="sr-only">Split button!</span>
       </button>
       <ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-        <li role="menuitem"><a ng-click="open()">New Foodie?</a></li>
-        <li role="menuitem"><a ng-click="close()">Existing Foodie?</a></li>
+        <li role="menuitem"><a ng-click="openE()">New Foodie?</a></li>
+        <li role="menuitem"><a ng-click="closeE()">Existing Foodie?</a></li>
       </ul>
     </div>
                                 <!-- <button type="button" class="btn btn-default btn-lg" ng-click="open()">EAT!</button> -->
@@ -175,13 +199,10 @@
         <div class="col-md-1"></div>
         <div class="col-xs-12 col-md-10">
             <uib-tabset justified="true">
-                <uib-tab heading="Cooks" ng-click = "go('/')"></uib-tab>
-                <uib-tab heading="Menu" ng-click = "go('/menu')"></uib-tab>
-                <uib-tab heading="Checkout" ng-click = "go('/checkout')"></uib-tab>
-                <uib-tab heading="User Profile" ng-click = "go('/userProfile')"></uib-tab>
-                <uib-tab heading="Past Reservations" ng-click = "go('/pastReservations')"></uib-tab>
+                <uib-tab class="makeGray" ng-repeat="tab in tabs" heading="{{tab.title}}" ng-click="$parent.go(tab.goHere)" active="tab.active" disable="tab.disabled">
+                    <div id="partialView" ng-view></div>
+                </uib-tab>
             </uib-tabset>
-            <div id="partialView" ng-view></div>
         </div>
         <div class="col-md-1"></div>
     </div>

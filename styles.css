@@ -16,11 +16,21 @@
   font-family: 'Cinzel', serif;
 }
 
+.makeBlue {
+  background-color: #23293F;
+  border-color: white;
+}
+
+.makeGray {
+  background-color: lightgray;
+}
+
 /*Main eat div*/
 #centerfold {
 	/*background-color: black;*/
-  background-image: url(http://image.made-in-china.com/2f0j00neEaGqkwfNbW/Cooking-Utensils-SYU026-.jpg);
+  background-image: url(https://foodtolive.com/wp-content/uploads/2015/10/Seasonal-Vegetables.jpg);
 	padding: 40px;
+  padding-top: 115px;
 	height: auto;
 }
 
@@ -32,7 +42,7 @@
   background-color: white;
   padding-left: 40px;
   padding-right: 40px;
-  height: 800px;
+  height: 700px;
   color: black; 
 }
 
@@ -85,10 +95,7 @@
   width: 100%;
 }
 
-.makeBlue {
-	background-color: #23293F;
-	border-color: white;
-}
+
 
 /*Eat Checkout View*/
 #checkoutReserveButton {
