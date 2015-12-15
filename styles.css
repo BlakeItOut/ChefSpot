@@ -25,6 +25,7 @@
   background-color: lightgray;
 }
 
+
 /*Main eat div*/
 #centerfold {
 	/*background-color: black;*/
@@ -42,9 +43,9 @@
   background-color: white;
   padding-left: 40px;
   padding-right: 40px;
-  height: 700px;
   color: black; 
 }
+
 
 /*Eat Cooks View*/
 #map {
@@ -53,7 +54,7 @@
 }
 
 #mapContainer{
-  height:600px;
+  height:400px;
   width:100%;
 }
 
@@ -63,6 +64,7 @@
     padding-top: 10px;
     color:black;
 }
+
 
 /*Eat Menu View*/
 #menuSubmitButton {
@@ -84,25 +86,50 @@
   border: 5px solid black;
 }
 
-/*Eat User Profile View*/
-
-#userForm {
-  background-color: white;
-  padding: 40px;
-}
-
-#userForm input {
-  width: 100%;
-}
-
-
 
 /*Eat Checkout View*/
 #checkoutReserveButton {
   width: 100%;
 }
 
+#checkoutInfo {
+  border-bottom: 1px solid black;
+  padding-bottom: 7px;
+}
 
+.checkoutPics {
+  max-height: 100px;
+  max-width: 100px;
+  border: 10px solid white;
+  text-align: center;
+}
+
+.checkoutHeaders {
+  font-size: 20pt;
+  text-align: right;
+  padding-top: 35px;
+}
+
+.checkoutNames {
+  font-size: 16pt;
+  padding-top: 35px;
+}
+
+.checkoutResults {
+  font-size: 16pt;
+  padding-top: 35px;
+  text-align: center;
+}
+
+.checkoutRows {
+  height:100px;
+}
+
+#servings {
+  font-size: 20pt;
+  padding-top: 35px;
+  text-align: center;
+}
 /*h2 {
     margin-bottom:0;
     margin-top: 0;
@@ -116,9 +143,31 @@ ul {
 
 #mainView {
   border: 1px solid black;
-	clear: both;
-	padding: 5px;
-	padding-left: 5px;
+  clear: both;
+  padding: 5px;
+  padding-left: 5px;
+}
+
+
+/*Eat User Profile View*/
+#userForm {
+  background-color: white;
+  padding: 40px;
+}
+
+#userForm input {
+  width: 100%;
+}
+
+
+/*Eat Reservation*/
+#upcomingReservations {
+  text-align: center;
+  padding-top: 30px;
+}
+#pastReservations {
+  text-align: center;
+  padding-top: 30px;
 }
 .height {
     min-height: 200px;
