@@ -69,8 +69,8 @@ app.controller('mainCTRL', function ($scope, $sce, $location) {
   {title: "Cooks", goHere: "/"},
   {title: "Menu", goHere: "/menu"},
   {title: "Checkout", goHere: "/checkout"},
-  {title: "User Profile", goHere: "/userProfile"},
-  {title: "Reservations", goHere: "/reservations"}
+  {title: "Reservations", goHere: "/reservations"},
+  {title: "User Profile", goHere: "/userProfile"}
   ]
 })
 
@@ -193,23 +193,24 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, 
   $scope.submitter= function(){
       $scope.input4 = $scope.chef
       if ($scope.radioModel === "Option 1") {
-        $scope.input1 = $scope.chef.menu.dish1.displayName
+        $scope.input1 = $scope.chef.menu.dish1;
         $scope.input2 = $scope.Servings1;
         $scope.input3 = $scope.chef.menu.dish1.costPerServing*$scope.Servings1;   
       } else if ($scope.radioModel === "Option 2") {
-        $scope.input1 = $scope.chef.menu.dish2.displayName
+        $scope.input1 = $scope.chef.menu.dish2;
         $scope.input2 = $scope.Servings2;
         $scope.input3 = $scope.chef.menu.dish2.costPerServing*$scope.Servings2  
       } else if ($scope.radioModel === "Option 3") {
-        $scope.input1 = $scope.chef.menu.dish3.displayName
+        $scope.input1 = $scope.chef.menu.dish3;
         $scope.input2 = $scope.Servings3;
         $scope.input3 = $scope.chef.menu.dish3.costPerServing*$scope.Servings3;
       }
       checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3, $scope.input4);
       $location.path( '/checkout' );
   }
-  function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
+  function cook(cookID, cookPic, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
     this.cookID = cookID;
+    this.cookPic = cookPic;
     this.firstName = first;
     this.lastName = last;
     this.email = email;
@@ -241,7 +242,7 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, 
 
   $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
 
-  $scope.shay = new cook(1000000001, "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+  $scope.shay = new cook(1000000001, "img/chefShay.png", "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
 
   $scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/chickenBriyani.png");
   $scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/spinachPaneer.png");
@@ -249,7 +250,7 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, 
 
   $scope.mickeyMenu = new menu($scope.pasta, $scope.chickenScallopini, $scope.venetoChicken);
 
-  $scope.mickey = new cook(1000000001, "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
+  $scope.mickey = new cook(1000000001, "img/mickeyMouse.png", "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
 
   $scope.chefArray = [$scope.shay, $scope.mickey]
 
@@ -263,15 +264,22 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, 
   setChef();
 });
 
-app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
+app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUser) {
     $scope.tabs[2].active = true;
-    $scope.checkoutFCTRL= checkoutFCTRL;
-    $scope.input1= checkoutFCTRL.input1;
-    $scope.input2= checkoutFCTRL.input2;
-    $scope.input3= checkoutFCTRL.input3;
-    $scope.chef = checkoutFCTRL.input4;
-    $scope.total = $scope.input3 / 100;
-    
+    $scope.dish = checkoutFCTRL.input1 || ""
+    $scope.input1=  $scope.dish.displayName || "Food Stuff"; //Dish Name
+    $scope.input2= checkoutFCTRL.input2 || "100";  //Servings
+    $scope.input3= checkoutFCTRL.input3 || "10000";  //Total in pennies
+    $scope.chef = checkoutFCTRL.input4 || "";
+    $scope.chefLastName = $scope.chef.lastName || "Khushnood"
+    $scope.dishPic = $scope.dish.picture || "img/chickenBriyani.png";
+    $scope.chefPic = $scope.chef.cookPic || "img/chefShay.png";
+    $scope.total = ($scope.input3 / 100) || "";
+    $scope.user = passUser.user || ""
+    $scope.eatFirstName = $scope.user.firstName || "John";
+    $scope.eatLastName = $scope.user.lastName || "Doe";
+    $scope.date = new Date();
+    $scope.datePlusOne = $scope.date.setDate($scope.date.getDate() + 1);
     $scope.confirm = function(){
       var handler = StripeCheckout.configure({
         key: 'pk_test_s1K2R5T90nTKpXtyZbQtg0o8',
@@ -295,7 +303,7 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL) {
 });
 
 app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
-  $scope.tabs[3].active = true;
+  $scope.tabs[4].active = true;
   $scope.eatFirstName = passUser.user.firstName || "";
   $scope.eatLastName = passUser.user.lastName || "";
   $scope.eatEmail = passUser.user.email || "";
@@ -339,7 +347,7 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
 });
 
 app.controller('eatReservationsCTRL', function ($scope, $sce) {
-  $scope.tabs[4].active = true;
+  $scope.tabs[3].active = true;
   function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
     this.cookID = cookID;
     this.firstName = first;

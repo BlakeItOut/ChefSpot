@@ -92,7 +92,44 @@
   width: 100%;
 }
 
+#checkoutInfo {
+  border-bottom: 1px solid black;
+  padding-bottom: 7px;
+}
 
+.checkoutPics {
+  max-height: 100px;
+  max-width: 100px;
+  border: 10px solid white;
+  text-align: center;
+}
+
+.checkoutHeaders {
+  font-size: 20pt;
+  text-align: right;
+  padding-top: 35px;
+}
+
+.checkoutNames {
+  font-size: 16pt;
+  padding-top: 35px;
+}
+
+.checkoutResults {
+  font-size: 16pt;
+  padding-top: 35px;
+  text-align: center;
+}
+
+.checkoutRows {
+  height:100px;
+}
+
+#servings {
+  font-size: 20pt;
+  padding-top: 35px;
+  text-align: center;
+}
 /*h2 {
     margin-bottom:0;
     margin-top: 0;
