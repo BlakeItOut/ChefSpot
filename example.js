@@ -340,6 +340,50 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
 
 app.controller('eatReservationsCTRL', function ($scope, $sce) {
   $scope.tabs[4].active = true;
+  function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
+    this.cookID = cookID;
+    this.firstName = first;
+    this.lastName = last;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.lattitude = lattitude;
+    this.longitude = longitude
+    this.menu = menu;
+    this.mainCuisine = mainCusine;
+  }
+
+  function menu(dish1, dish2, dish3) {
+    this.dish1 = dish1;
+    this.dish2 = dish2;
+    this.dish3 = dish3;
+  }
+
+  function dish(displayName, costPerServing, ingredients, maxServings, cuisineType, picture) {
+    this.displayName = displayName;
+    this.costPerServing = costPerServing;
+    this.ingredients = ingredients;
+    this.maxServings = maxServings;
+    this.cuisineType = cuisineType;
+    this.picture = picture;
+  }
+
+  $scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani", "img/chickenBriyani.png");
+  $scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian", "img/spinachPaneer.png");
+  $scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian", "img/chanaMasala.png");
+
+  $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
+
+  $scope.shay = new cook(1000000001, "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+
+  $scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/chickenBriyani.png");
+  $scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/spinachPaneer.png");
+  $scope.venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/chanaMasala.png");
+
+  $scope.mickeyMenu = new menu($scope.pasta, $scope.chickenScallopini, $scope.venetoChicken);
+
+  $scope.mickey = new cook(1000000001, "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
+
+  $scope.chefArray = [$scope.shay, $scope.mickey]
 });
 
 app.factory('checkoutFCTRL', function(){
