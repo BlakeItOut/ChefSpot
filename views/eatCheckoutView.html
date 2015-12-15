@@ -1,32 +1,32 @@
 <div class="row checkoutRows">
-	<div class = "col-md-3"></div>
-	<div class="col-md-6 centeredText checkoutNames" id="checkoutInfo">Current Reservations for {{eatFirstName}}<br>{{datePlusOne | date:'fullDate'}}</div><br>
+	<div class = "col-xs-3 col-md-3"></div>
+	<div class="col-xs-6 col-md-6 centeredText checkoutNames" id="checkoutInfo">Current Reservations for {{eatFirstName}}<br>{{datePlusOne | date:'fullDate'}}</div><br>
 </div>
 <div class="row checkoutRows">
-  <div class = "col-md-6 checkoutHeaders">Your Chef:</div>
-  <div class = "col-md-1"><img ng-src="{{chefPic}}" class="checkoutPics"></div>
-  <div class = "col-md-5 checkoutNames"> Chef {{chefLastName}}</div>
+  <div class = "col-xs-6 col-md-6 checkoutHeaders">Your Chef:</div>
+  <div class = "col-xs-1 col-md-1"><img ng-src="{{chefPic}}" class="checkoutPics"></div>
+  <div class = "col-xs-5 col-md-5 checkoutNames"> Chef {{chefLastName}}</div>
 </div>
 <div class="row checkoutRows">
-  <div class = "col-md-6 checkoutHeaders">Your Dish:</div>
-  <div class = "col-md-1"><img ng-src="{{dishPic}}" class="checkoutPics"></div>
-  <div class = "col-md-5 checkoutNames"> {{input1}}</div>
+  <div class = "col-xs-6 col-md-6 checkoutHeaders">Your Dish:</div>
+  <div class = "col-xs-1 col-md-1"><img ng-src="{{dishPic}}" class="checkoutPics"></div>
+  <div class = "col-xs-5 col-md-5 checkoutNames"> {{input1}}</div>
 </div>
 <div class="row checkoutRows">
-  <div class = "col-md-6 checkoutHeaders"># of Servings:</div>
-  <div class = "col-md-1" id="servings"> {{input2}}</div>
+  <div class = "col-xs-6 col-md-6 checkoutHeaders"># of Servings:</div>
+  <div class = "col-xs-1 col-md-1" id="servings"> {{input2}}</div>
 </div>
 <div class="row checkoutRows">
-  <div class = "col-md-6 checkoutHeaders">Cost/Serving({{(total/input2)|currency}}) x {{input2}} Servings =</div>
-  <div class = "col-md-1 checkoutResults"> {{total|currency}}</div>
+  <div class = "col-xs-6 col-md-6 checkoutHeaders">Cost/Serving({{(total/input2)|currency}}) x {{input2}} Servings =</div>
+  <div class = "col-xs-1 col-md-1 checkoutResults"> {{total|currency}}</div>
 </div>
 <div class="row checkoutRows">
-  <div class = "col-md-6 checkoutHeaders">Keep the Lights on at Chef's Spot (1%) =</div>
-  <div class = "col-md-1 checkoutResults"> {{(total*.01)|currency}}</div>
+  <div class = "col-xs-6 col-md-6 checkoutHeaders">Keep the Lights on at Chef's Spot (1%) =</div>
+  <div class = "col-xs-1 col-md-1 checkoutResults"> {{(total*.01)|currency}}</div>
 </div>
 <div class="row checkoutRows">
-  <div class = "col-md-6 checkoutHeaders">Total =</div>
-  <div class = "col-md-1 checkoutResults"> {{(total*1.01)|currency}}</div>
+  <div class = "col-xs-6 col-md-6 checkoutHeaders">Total =</div>
+  <div class = "col-xs-1 col-md-1 checkoutResults"> {{(total*1.01)|currency}}</div>
 </div>
 <form method="POST">
   <button id="checkoutReserveButton" ng-click= 'confirm()' href="#/">Reserve that dish!!!</button>
