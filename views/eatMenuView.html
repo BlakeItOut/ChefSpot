@@ -26,7 +26,21 @@
 		</div>
 		<br>
 		<br>
-		<div class="row">
+				<div class="row">
+			<div class="col-xs-4 col-md-4">
+			Cost per Serving: {{chef.menu.dish1.costPerServing}}
+			</div>
+			<div class="col-xs-4 col-md-4">
+			Cost per Serving: {{chef.menu.dish2.costPerServing}}
+			</div>
+			<div class="col-xs-4 col-md-4">
+			Cost per Serving: {{chef.menu.dish3.costPerServing}}
+			</div>
+		</div>		
+	</div>
+</div>
+		<br>
+<div class="row">
 			<div class="col-xs-4 col-md-4">
 				Servings: <input ng-model="Servings1" type="number">
 			</div>
@@ -35,11 +49,6 @@
 			</div>
 			<div class="col-xs-4 col-md-4">
 				Servings: <input ng-model="Servings3" type="number">
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-xs-4 col-md-4">
 				Appx. Total: {{(((chef.menu.dish1.costPerServing)*Servings1)/100)|currency}}
 			</div>
 			<div class="col-xs-4 col-md-4">
@@ -48,11 +57,9 @@
 			<div class="col-xs-4 col-md-4">
 				Appx. Total: {{(((chef.menu.dish3.costPerServing)*Servings3)/100)|currency}}
 			</div>
-		</div>		
-	</div>
-</div>
+		</div>
 <br>
 <form action="#/checkout">
-	<input id = "menuSubmitButton" type = 'submit' value = 'Checkout' ng-click='submitter()'/>
+	<button id = "menuSubmitButton" type = 'submit' value = 'Checkout' ng-click='submitter()'></button>
 </form>
 
