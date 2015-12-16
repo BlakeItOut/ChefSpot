@@ -29,7 +29,7 @@
 /*Main eat div*/
 #centerfold {
 	/*background-color: black;*/
-  background-image: url(https://foodtolive.com/wp-content/uploads/2015/10/Seasonal-Vegetables.jpg);
+  background-image: url(http://www.porcelaingres.com/img/prodotti/collezioni/big/just_beige_light_beige_n.jpg);
 	padding: 40px;
   padding-top: 115px;
 	height: auto;
@@ -49,8 +49,9 @@
 
 /*Eat Cooks View*/
 #map {
-    height:400px;
+    height:350px;
     width:100%;
+    padding-bottom: 20px;
 }
 
 #mapContainer{
