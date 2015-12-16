@@ -122,40 +122,44 @@
 }
 
 .checkoutPics {
-  max-height: 100px;
-  max-width: 100px;
-  border: 10px solid white;
+  padding: 2%;
+  border: 1px solid lightgray; !important
+  border-radius: 4px;
+  max-height:100%;
+  max-width:100%;
   text-align: center;
+  vertical-align: middle;
 }
 
 .checkoutHeaders {
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   /*font-size: 20pt;*/
   text-align: right;
-  padding-top: 35px;
+  padding-top: 2%;
+  vertical-align: middle;
 }
 
 .checkoutNames {
   font-size: 1.2vw;
   /*font-size: 16pt;*/
-  padding-top: 35px;
+  padding-top: 2%;
 }
 
 .checkoutResults {
   font-size: 1.2vw;
   /*font-size: 16pt;*/
-  padding-top: 35px;
+  padding-top: 2%;
   text-align: center;
 }
 
 .checkoutRows {
-  height:15%;
+  height:20%;
 }
 
 #servings {
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   /*font-size: 20pt;*/
-  padding-top: 35px;
+  padding-top: 2%;
   text-align: center;
 }
 
