@@ -1,3 +1,4 @@
+<br>
 <div id="menuContainer">
 	<div class="dishContainer">
 		<div class="row">
@@ -12,43 +13,55 @@
 			</div>
 		</div>
 		<br>
-		<div class="row btn-group">
+		<div class="row" id="dishPictureContainer">
 			<div class="col-xs-4 col-md-4">
-				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 1'"><img ng-src="{{chef.menu.dish1.picture}}" alt="Dish 1" class="dishPics"></label>
+				<img ng-model="radioModel" uib-btn-radio="'Option 1'" ng-src="{{chef.menu.dish1.picture}}" alt="Dish 1" id="dishPicFrame" class="dishPics btn">
 			</div>
 			<div class="col-xs-4 col-md-4">
-				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 2'"><img ng-src="{{chef.menu.dish2.picture}}" alt="Dish 1" class="dishPics"></label>
+				<img ng-model="radioModel" uib-btn-radio="'Option 2'" ng-src="{{chef.menu.dish2.picture}}" alt="Dish 1" id="dishPicFrame" class="dishPics btn">
 			</div>
 			<div class="col-xs-4 col-md-4">
-				<label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Option 3'"><img ng-src="{{chef.menu.dish3.picture}}" alt="Dish 1" class="dishPics"></label>
+				<img ng-model="radioModel" uib-btn-radio="'Option 3'" ng-src="{{chef.menu.dish3.picture}}" alt="Dish 1" id="dishPicFrame" class="dishPics btn">
 			</div>
 		</div>
 		<br>
-		<br>
 		<div class="row">
+			<div class="col-xs-4 col-md-4">
+			Cost per Serving: {{((chef.menu.dish1.costPerServing)/100)|currency}}
+			</div>
+			<div class="col-xs-4 col-md-4">
+			Cost per Serving: {{((chef.menu.dish2.costPerServing)/100)|currency}}
+			</div>
+			<div class="col-xs-4 col-md-4">
+			Cost per Serving: {{((chef.menu.dish3.costPerServing)/100)|currency}}
+			</div>
+		</div>		
+
+
+		<br>
+<div class="row">
 			<div class="col-xs-4 col-md-4">
 				Servings: <input ng-model="Servings1" type="number">
 			</div>
 			<div class="col-xs-4 col-md-4">
 				Servings: <input ng-model="Servings2" type="number">
 			</div>
+
 			<div class="col-xs-4 col-md-4">
 				Servings: <input ng-model="Servings3" type="number">
 			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-xs-4 col-md-4">
-				{{chef.menu.dish1.displayName}}
+</div>
+<br>
+<div class="row">		
+			<div class="col-xs-4 col-md-4">	
+				Appx. Total: {{(((chef.menu.dish1.costPerServing)*Servings1)/100)|currency}}
 			</div>
 			<div class="col-xs-4 col-md-4">
-				{{chef.menu.dish2.displayName}}
+				Appx. Total: {{(((chef.menu.dish2.costPerServing)*Servings2)/100)|currency}}
 			</div>
 			<div class="col-xs-4 col-md-4">
-				{{chef.menu.dish3.displayName}}
+				Appx. Total: {{(((chef.menu.dish3.costPerServing)*Servings3)/100)|currency}}
 			</div>
-		</div>		
-	</div>
 </div>
 <br>
 
@@ -56,6 +69,6 @@
 
 
 <form action="#/checkout">
-	<input id = "menuSubmitButton" type = 'submit' value = 'Checkout' ng-click='submitter()'/>
+	<button id = "menuSubmitButton" type = 'submit' ng-click='submitter()'>Checkout</button>
 </form>
 
