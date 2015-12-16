@@ -48,15 +48,100 @@ app.config(function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/'});
 }); 
 
-app.controller('/cookMenuSetCTRL', function(){
+app.factory('createCookMenuF', function(){
+
+  var fullMenuOpts = [
+
+  {"MealName": null , "MaxServings": 0 , "PricePerServ": 00.00 , "MealImage": null , "Ingredients": [] , "Cuisines": [], "Created": false},
+  {"MealName": null , "MaxServings": 0 , "PricePerServ": 00.00 , "MealImage": null , "Ingredients": [] , "Cuisines": [], "Created": false},
+  {"MealName": null , "MaxServings": 0 , "PricePerServ": 00.00 , "MealImage": null , "Ingredients": [] , "Cuisines": [], "Created": false}
+
+  ];
+
+  fullMenuOpts.setData = function(input1, input2, input3, input4, input5){
+    this.input1 = fullMenuOpts[i].MealName;
+    this.input2 = fullMenuOpts[i].MaxServings;
+    this.input3 = fullMenuOpts[i].PricePerServ;
+    this.input4 = fullMenuOpts[i].MealImage;
+    this.input5 = fullMenuOpts[i].Ingredients;
+    this.input6 = fullMenuOpts[i].Cuisines;
+  }
+
+}return fullMenuOpts;
+
+});
+
+app.controller('cookMenuSetCTRL', function(createCookMenuF){
+
+  function setToDishFill(){
+    $("select")
+      .change(function(){
+        $("select option: selected").each(function(){
+          
+        });
+        $("div").text(str);
+      })
+      .trigger("change");
+  }
+
+  function setDish() {
+    $scope.createCookMenuF= createCookMenuF;
+    $scope.input1= createCookMenuF.input1;
+    $scope.input2= createCookMenuF.input2;
+    $scope.input3= createCookMenuF.input3;
+    $scope.input4= createCookMenuF.input4;
+    $scope.input5= createCookMenuF.input5;
+    $scope.input6= createCookMenuF.input6;
+  }
+
+  $scope.cuisines = [
+    {name: 'American', chosen: false},
+    {name:'Canadian', chosen: false},
+    {name: 'Cuban', chosen: false},
+    {name: 'French', chosen: false},
+    {name: 'Greek', chosen: false},
+    {name: 'Indian', chosen: false},
+    {name: 'Irish', chosen: false},
+    {name: 'Italian', chosen: false},
+    {name: 'Japanese', chosen: false},
+    {name: 'Mexican', chosen: false},
+    {name: 'Mediterranean', chosen: false},
+    {name: 'Pakistani', chosen: false},
+    {name: 'Seafood', chosen: false},
+    {name: 'Spanish', chosen: false},
+    {name: 'Sushi', chosen: false},
+    {name: 'Thai', chosen: false},
+    {name: 'Vegetarian', chosen: false}
+  ];
+  $scope.checkResults = [];
+
+  $scope.$watch('cuisines', function () {
+    $scope.checkResults = [];
+    angular.forEach($scope.cuisines, function (value, key) {
+      if (value.chosen) {
+        $scope.checkResults.push(value.name);
+      }
+    });
+  }, true);
+
 
 })
 
-app.controller('/cookAvailabilityCTRL', function(){
+app.controller('cookAvailabilityCTRL', function(){
+  $('#demo').daterangepicker({
+    "singleDatePicker": true,
+    "timePicker": true,
+    "timePickerSeconds": true,
+    "startDate": "12/09/2015",
+    "endDate": "12/15/2015",
+    "opens": "center"
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
 
 })
 
-app.controller('/cookCookProfCTRL', function(){
+app.controller('cookCookProfCTRL', function(){
 
 })
 
@@ -229,6 +314,10 @@ function dish(displayName, costPerServing, ingredients, maxServings, cuisineType
   this.cuisineType = cuisineType;
   this.picture = picture;
 }
+
+ $(function() {
+    $( "#datepicker" ).datepicker();
+  });
 
 $scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani", "img/chickenBriyani.png");
 $scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian", "img/spinachPaneer.png");
@@ -477,7 +566,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     $scope.userInfo = new user();
     passUser.setData($scope.userInfo);
     $uibModalInstance.close($scope.selected.item);
-    console.log($( "#eatSide" ).get( 0 ));
+    console.log($( "#cookSide" ).get( 0 ));
     $( "#cookSide" ).removeClass("ng-hide");
   };
 });
