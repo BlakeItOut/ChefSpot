@@ -366,8 +366,9 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
 
 app.controller('eatReservationsCTRL', function ($scope, $sce) {
   $scope.tabs[3].active = true;
-  function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
+  function cook(cookID, cookPic, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
     this.cookID = cookID;
+    this.cookPic = cookPic;
     this.firstName = first;
     this.lastName = last;
     this.email = email;
@@ -399,17 +400,35 @@ app.controller('eatReservationsCTRL', function ($scope, $sce) {
 
   $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
 
-  $scope.shay = new cook(1000000001, "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
+  $scope.shay = new cook(1000000001, "img/chefShay.png", "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
 
-  $scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/chickenBriyani.png");
-  $scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/spinachPaneer.png");
-  $scope.venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/chanaMasala.png");
+  $scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/pasta.jpeg");
+  $scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/chickenscal.png");
+  $scope.venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/veneto.png");
 
   $scope.mickeyMenu = new menu($scope.pasta, $scope.chickenScallopini, $scope.venetoChicken);
 
   $scope.mickey = new cook(1000000001, "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
+  
+  $scope.chimi = new dish("Chicken Chimi in the Oven", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/chimi.jpg");
+  $scope.Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/fishtacos.jpg");
+  $scope.fishTacos = new dish("Fish Tacos", 700, ["Curry", "Meat", "Chickpeas"], 8, "", "img/carni.jpg");
 
-  $scope.chefArray = [$scope.shay, $scope.mickey]
+  $scope.hernandezMenu = new menu($scope.chimi, $scope.Carnitas, $scope.fishTacos);
+
+  $scope.hernandez = new cook(1000000003, "Hernandez", "Altano", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.hernandezMenu, "Mexican");
+
+  $scope.padThai = new dish("Pad Thai With Chicken and Shrimp", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/padthai.jpg");
+  $scope.slowCooker = new dish("Slow Cooker Chicken ", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/slowcook.jpg");
+  $scope.peanutSauce = new dish("Thai Noodles With Spicy Peanut Sauce", 700, ["Curry", "Meat", "Chickpeas"], 8, "Thai", "img/thainod.jpg");
+
+  $scope.fernandoMenu = new menu($scope.padThai, $scope.slowCooker, $scope.peanutSauce);
+
+  $scope.fernando = new cook(1000000004, "Fernando", "Alonso", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.fernandoMenu, "Mexican");
+  $scope.mickey = new cook(1000000001, "img/mickeyMouse.png", "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
+
+
+  $scope.chefArray = [$scope.shay, $scope.mickey, $scope.hernandez, $scope.fernando]
 });
 
 app.factory('checkoutFCTRL', function(){

@@ -67,6 +67,15 @@
 
 
 /*Eat Menu View*/
+.dishButtons {
+  background-color: white;
+}
+
+
+#menuContainer {
+  font-size: 1vw;
+}
+
 #menuSubmitButton {
   width: 100%;
   height: 50px;
@@ -80,12 +89,27 @@
   text-align: center;
 }
 
-.dishPics {
+#dishPicFrame {
+  padding: 2%;
+  border: 1px solid lightgray; !important
+  border-radius: 4px;
   max-height:100%;
   max-width:100%;
-  border: 5px solid black;
 }
 
+.dishPics:hover {
+  padding: 2%;
+  border: 1px solid white;
+  background-color: lightgray;
+  border-radius: 4px;
+}
+
+.dishPics.active {
+  padding: 2%;
+  border: 1px solid white;
+  background-color: black;
+  border-radius: 4px;
+}
 
 /*Eat Checkout View*/
 #checkoutReserveButton {
@@ -105,30 +129,39 @@
 }
 
 .checkoutHeaders {
-  font-size: 20pt;
+  font-size: 1.5vw;
+  /*font-size: 20pt;*/
   text-align: right;
   padding-top: 35px;
 }
 
 .checkoutNames {
-  font-size: 16pt;
+  font-size: 1.2vw;
+  /*font-size: 16pt;*/
   padding-top: 35px;
 }
 
 .checkoutResults {
-  font-size: 16pt;
+  font-size: 1.2vw;
+  /*font-size: 16pt;*/
   padding-top: 35px;
   text-align: center;
 }
 
 .checkoutRows {
-  height:100px;
+  height:15%;
 }
 
 #servings {
-  font-size: 20pt;
+  font-size: 1.5vw;
+  /*font-size: 20pt;*/
   padding-top: 35px;
   text-align: center;
+}
+
+#reserveButton {
+  width: 100%;
+  height: 50px;
 }
 /*h2 {
     margin-bottom:0;
