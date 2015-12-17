@@ -136,16 +136,24 @@ app.controller('cookMenuSetCTRL', function(createCookMenuF){
 })
 
 app.controller('cookAvailabilityCTRL', function(){
-  $('#demo').daterangepicker({
-    "singleDatePicker": true,
-    "timePicker": true,
-    "timePickerSeconds": true,
-    "startDate": "12/09/2015",
-    "endDate": "12/15/2015",
-    "opens": "center"
-}, function(start, end, label) {
-  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-});
+
+  self = this;
+  self.someProp = 'Check This value displays.. confirms controller initalised'
+  self.opened = {};
+  self.open = function($event) {
+
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    self.opened = {};
+    self.opened[$event.target.id] = true;
+
+    // log this to check if its setting the log    
+    console.log(self.opened);
+    
+  };
+
+  self.format = 'dd-MM-yyyy'
 
 })
 
