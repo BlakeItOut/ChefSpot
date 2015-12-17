@@ -203,7 +203,7 @@ ul {
 /*Eat Reservation*/
 #upcomingReservations {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 #reserveHeaders {
@@ -218,6 +218,7 @@ ul {
 #pastReservations {
   text-align: center;
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .reservationButton {
@@ -226,7 +227,7 @@ ul {
 }
 
 .reservationBottom {
-  height:20px;
+  padding-top:20px;
 }
 
 .height {
