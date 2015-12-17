@@ -14,7 +14,7 @@
 </div>
 <div class="row checkoutRows">
   <div class = "col-xs-6 col-md-6 checkoutHeaders"># of Servings:</div>
-  <div class = "col-xs-1 col-md-1" id="servings"> {{input2}}</div>
+  <div class = "col-xs-1 col-md-1" id="servings">{{input2}}</div>
 </div>
 <div class="row checkoutRows">
   <div class = "col-xs-6 col-md-6 checkoutHeaders">Cost/Serving({{(total/input2)|currency}}) x {{input2}} Servings =</div>
@@ -30,7 +30,7 @@
 </div>
 <br>
 <form method="POST">
-  <button id="reserveButton" ng-click= 'confirm()'>Confirm Reservation</button>
+  <button href="#/reservations" id="reserveButton" ng-click= 'confirm()'>Confirm Reservation</button>
 </form>
 
 
