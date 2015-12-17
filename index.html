@@ -207,21 +207,20 @@
     </div>
 </div>
 
-<a name ="cookServices"></a>
-<div id= "cookSide" ng-controller= "mainCTRL" class="ng-hide">
+<!-- <a name ="cookServices"></a>
+<div id= "cookSide"  ng-controller= "mainCookCTRL" class="ng-hide">
     <div id="centerfold" class="col-xs-12 col-md-12">
         <div class="col-md-1"></div>
         <div class="col-xs-12 col-md-10">
             <uib-tabset justified="true">
-                <uib-tab heading="Menu Set" ng-click = "go('/MenuSet')"></uib-tab>
-                <uib-tab heading="Availabilty" ng-click = "go('/Availability')"></uib-tab>
-                <uib-tab heading="Cook Profile" ng-click = "go('/CookProf')"></uib-tab>
+                <uib-tab class="makeGray" ng-repeat="tabc in tabcs" heading="{{tabc.title}}" ng-click="$parent.go(tabc.goHere)" active="tabc.active" disable="tabc.disabled">
+                    <div id="partialView" ng-view></div>
+                </uib-tab>
             </uib-tabset>
-            <div id="partialView" ng-view></div>
         </div>
         <div class="col-md-1"></div>
     </div>
-</div>
+</div> -->
     <!-- Page Content -->
 
 

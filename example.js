@@ -48,28 +48,36 @@ app.config(function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/'});
 }); 
 
-app.factory('createCookMenuF', function(){
-
-  var fullMenuOpts = [
-
-  {"MealName": null , "MaxServings": 0 , "PricePerServ": 00.00 , "MealImage": null , "Ingredients": [] , "Cuisines": [], "Created": false},
-  {"MealName": null , "MaxServings": 0 , "PricePerServ": 00.00 , "MealImage": null , "Ingredients": [] , "Cuisines": [], "Created": false},
-  {"MealName": null , "MaxServings": 0 , "PricePerServ": 00.00 , "MealImage": null , "Ingredients": [] , "Cuisines": [], "Created": false}
-
-  ];
-
-  fullMenuOpts.setData = function(input1, input2, input3, input4, input5){
-    this.input1 = fullMenuOpts[i].MealName;
-    this.input2 = fullMenuOpts[i].MaxServings;
-    this.input3 = fullMenuOpts[i].PricePerServ;
-    this.input4 = fullMenuOpts[i].MealImage;
-    this.input5 = fullMenuOpts[i].Ingredients;
-    this.input6 = fullMenuOpts[i].Cuisines;
+app.controller('mainCookCTRL', function ($scope, $sce, $location) {
+  $scope.go = function (path) {
+    $location.path(path);
   }
+ $scope.tabcs = [
+  {title: "Your Menu", goHere: '/MenuSet'},
+  {title: "Your Availability", goHere: '/Availability'},
+  {title: "User Profile", goHere: '/CookProf'}
+  ]
+})
+// app.factory('createCookMenuF', function(){
 
-}return fullMenuOpts;
+//   var fullMenuOpts = [
+//   {MealName: null , MaxServings: 0 , PricePerServ: 00.00 , MealImage: null , Ingredients: [] , Cuisines: [], reated: false},
+//   {MealName: null , MaxServings: 0 , PricePerServ: 00.00 , MealImage: null , Ingredients: [] , Cuisines: [], reated: false},
+//   {MealName: null , MaxServings: 0 , PricePerServ: 00.00 , MealImage: null , Ingredients: [] , Cuisines: [], reated: false}
+//   ];
 
-});
+//   fullMenuOpts.setData = function(input1, input2, input3, input4, input5){
+//     this.input1 = fullMenuOpts[i].MealName;
+//     this.input2 = fullMenuOpts[i].MaxServings;
+//     this.input3 = fullMenuOpts[i].PricePerServ;
+//     this.input4 = fullMenuOpts[i].MealImage;
+//     this.input5 = fullMenuOpts[i].Ingredients;
+//     this.input6 = fullMenuOpts[i].Cuisines;
+//   }
+
+// }return fullMenuOpts;
+
+// });
 
 app.controller('cookMenuSetCTRL', function(createCookMenuF){
 
@@ -149,7 +157,6 @@ app.controller('mainCTRL', function ($scope, $sce, $location) {
   $scope.go = function (path) {
     $location.path(path);
   }
-  $scope.anything = "text";
   $scope.tabs = [
   {title: "Cooks", goHere: "/"},
   {title: "Menu", goHere: "/menu"},
@@ -163,8 +170,7 @@ app.controller('eatCooksCTRL', function ($scope, $geolocation, chooseCook) {
     $scope.tabs[0].active = true;
     $scope.cookget= function(){
       // displaying the object at that click
-      console.log("plz");
-      } 
+    } 
 var cooks = [
     {
         name : 'Sheharyar Khushnood',
@@ -351,86 +357,27 @@ $scope.peanutSauce = new dish("Thai Noodles With Spicy Peanut Sauce", 700, ["Cur
 $scope.fernandoMenu = new menu($scope.padThai, $scope.slowCooker, $scope.peanutSauce);
 
 $scope.fernando = new cook(1000000004, "img/fernando.jpg", "Fernando", "Alonso", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.fernandoMenu, "Mexican");
- 
 
-<<<<<<< HEAD
-function cook(cookID, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
-  this.cookID = cookID;
-  this.firstName = first;
-  this.lastName = last;
-  this.email = email;
-  this.phoneNumber = phoneNumber;
-  this.lattitude = lattitude;
-  this.longitude = longitude
-  this.menu = menu;
-  this.mainCuisine = mainCusine;
-}
+$scope.chefArray = [$scope.shay, $scope.mickey, $scope.fernando, $scope.scarlett];
 
-function menu(dish1, dish2, dish3) {
-  this.dish1 = dish1;
-  this.dish2 = dish2;
-  this.dish3 = dish3;
-}
-
-function dish(displayName, costPerServing, ingredients, maxServings, cuisineType, picture) {
-  this.displayName = displayName;
-  this.costPerServing = costPerServing;
-  this.ingredients = ingredients;
-  this.maxServings = maxServings;
-  this.cuisineType = cuisineType;
-  this.picture = picture;
-}
-
- $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-
-$scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani", "img/chickenBriyani.png");
-$scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian", "img/spinachPaneer.png");
-$scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian", "img/chanaMasala.png");
-
-$scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
-
-$scope.shay = new cook(1000000001, "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
-
-$scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/chickenBriyani.png");
-$scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/spinachPaneer.png");
-$scope.venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/chanaMasala.png");
-
-$scope.mickeyMenu = new menu($scope.pasta, $scope.chickenScallopini, $scope.venetoChicken);
-
-$scope.mickey = new cook(1000000001, "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
-
-$scope.chefArray = [$scope.shay, $scope.mickey]
-
-console.log(chooseCook);
 function setChef () {
   for(i=0; i<$scope.chefArray.length; i++) {
     if($scope.chefsName === ($scope.chefArray[i].firstName + " " + $scope.chefArray[i].lastName)) {
       $scope.chef = $scope.chefArray[i];
-=======
-
-  $scope.chefArray = [$scope.shay, $scope.mickey, $scope.scarlett, $scope.fernando]
-
-  function setChef () {
-    for(i=0; i<$scope.chefArray.length; i++) {
-      if($scope.chefsName === ($scope.chefArray[i].firstName + " " + $scope.chefArray[i].lastName)) {
-        $scope.chef = $scope.chefArray[i];
-      }
->>>>>>> a9ae7388ad02aeb4de3fe2ea550b5cffb5594251
     }
   }
-  setChef();
+}
+setChef();
 });
 
-app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUser) {
+app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUser, reservations) {
     $scope.tabs[2].active = true;
-    $scope.dish = checkoutFCTRL.input1 || ""
+    $scope.dish = checkoutFCTRL.input1 || ""; //Dish object
     $scope.input1=  $scope.dish.displayName || "Food Stuff"; //Dish Name
     $scope.input2= checkoutFCTRL.input2 || "100";  //Servings
     $scope.input3= checkoutFCTRL.input3 || "10000";  //Total in pennies
-    $scope.chef = checkoutFCTRL.input4 || "";
-    $scope.chefLastName = $scope.chef.lastName || "Khushnood"
+    $scope.chef = checkoutFCTRL.input4 || ""; //Chef object
+    $scope.chefLastName = $scope.chef.lastName || "Khushnood" 
     $scope.dishPic = $scope.dish.picture || "img/chickenBriyani.png";
     $scope.chefPic = $scope.chef.cookPic || "img/chefShay.png";
     $scope.total = ($scope.input3 / 100) || "";
@@ -439,7 +386,14 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUse
     $scope.eatLastName = $scope.user.lastName || "Doe";
     $scope.date = new Date();
     $scope.datePlusOne = $scope.date.setDate($scope.date.getDate() + 1);
+    $scope.dishDescription = $scope.input2 + " Servings of Delicious";
+    $scope.reservation = new Object();
+    $scope.reservation.chef = $scope.chef;
+    $scope.reservation.date = $scope.datePlusOne;
+    $scope.reservation.dish = $scope.dish;
     $scope.confirm = function(){
+      console.log($scope.reservations)
+      reservations.addReservation($scope.reservation);
       var handler = StripeCheckout.configure({
         key: 'pk_test_s1K2R5T90nTKpXtyZbQtg0o8',
         // image: '/img/documentation/checkout/marketplace.png',
@@ -452,25 +406,41 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUse
           })
         }
       });
-        handler.open({
-          name: checkoutFCTRL.input1,
-          description: checkoutFCTRL.input2,
-          zipCode: true,
-          amount: checkoutFCTRL.input3
-        });
-      }
+      handler.open({
+        name: $scope.input1,
+        description: $scope.dishDescription,
+        zipCode: true,
+        amount: checkoutFCTRL.input3
+      });
+  }
+});
+
+app.controller('eatReservationsCTRL', function ($scope, $sce, reservations) {
+  $scope.tabs[3].active = true;
+  $scope.reservations = reservations;
+});
+
+app.factory('reservations', function(){
+  var reservations = {};
+  var counter = 0;
+  reservations.addReservation = function(newReservation){
+    counter++;
+    this[counter] = newReservation;            
+  }
+  return reservations;
 });
 
 app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
   $scope.tabs[4].active = true;
-  $scope.eatFirstName = passUser.user.firstName || "";
-  $scope.eatLastName = passUser.user.lastName || "";
-  $scope.eatEmail = passUser.user.email || "";
-  $scope.eatStreetAddress = passUser.user.streetAddress || "";
-  $scope.eatCity = passUser.user.city || "";
-  $scope.eatState = passUser.user.state || "";
-  $scope.eatZipCode = passUser.user.zipCode || "";
-  $scope.cuisines = passUser.user.cuisines || [
+  $scope.user = passUser.user || ""
+  $scope.eatFirstName = $scope.user.firstName || "";
+  $scope.eatLastName = $scope.user.lastName || "";
+  $scope.eatEmail = $scope.user.email || "";
+  $scope.eatStreetAddress = $scope.user.streetAddress || "";
+  $scope.eatCity = $scope.user.city || "";
+  $scope.eatState = $scope.user.state || "";
+  $scope.eatZipCode = $scope.user.zipCode || "";
+  $scope.cuisines = $scope.user.cuisines || [
     {name: 'American', chosen: false},
     {name:'Canadian', chosen: false},
     {name: 'Cuban', chosen: false},
@@ -499,78 +469,8 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
       }
     });
   }, true);
-
-  $scope.refresh = function () {
-    console.log(passUser);
-  }
 });
 
-app.controller('eatReservationsCTRL', function ($scope, $sce) {
-  $scope.tabs[3].active = true;
-  function cook(cookID, cookPic, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
-    this.cookID = cookID;
-    this.cookPic = cookPic;
-    this.firstName = first;
-    this.lastName = last;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.lattitude = lattitude;
-    this.longitude = longitude
-    this.menu = menu;
-    this.mainCuisine = mainCusine;
-  }
-
-  function menu(dish1, dish2, dish3) {
-    this.dish1 = dish1;
-    this.dish2 = dish2;
-    this.dish3 = dish3;
-  }
-
-  function dish(displayName, costPerServing, ingredients, maxServings, cuisineType, picture) {
-    this.displayName = displayName;
-    this.costPerServing = costPerServing;
-    this.ingredients = ingredients;
-    this.maxServings = maxServings;
-    this.cuisineType = cuisineType;
-    this.picture = picture;
-  }
-
-  $scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani", "img/chickenBriyani.png");
-  $scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian", "img/spinachPaneer.png");
-  $scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian", "img/chanaMasala.png");
-
-  $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
-
-  $scope.shay = new cook(1000000001, "img/chefShay.png", "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
-
-  $scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/pasta.jpeg");
-  $scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/chickenscal.png");
-  $scope.venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/veneto.png");
-
-  $scope.mickeyMenu = new menu($scope.pasta, $scope.chickenScallopini, $scope.venetoChicken);
-
-  $scope.mickey = new cook(1000000001, "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
-  
-  $scope.chimi = new dish("Chicken Chimi in the Oven", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/chimi.jpg");
-  $scope.Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/fishtacos.jpg");
-  $scope.fishTacos = new dish("Fish Tacos", 700, ["Curry", "Meat", "Chickpeas"], 8, "", "img/carni.jpg");
-
-  $scope.hernandezMenu = new menu($scope.chimi, $scope.Carnitas, $scope.fishTacos);
-
-  $scope.hernandez = new cook(1000000003, "Hernandez", "Altano", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.hernandezMenu, "Mexican");
-
-  $scope.padThai = new dish("Pad Thai With Chicken and Shrimp", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/padthai.jpg");
-  $scope.slowCooker = new dish("Slow Cooker Chicken ", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/slowcook.jpg");
-  $scope.peanutSauce = new dish("Thai Noodles With Spicy Peanut Sauce", 700, ["Curry", "Meat", "Chickpeas"], 8, "Thai", "img/thainod.jpg");
-
-  $scope.fernandoMenu = new menu($scope.padThai, $scope.slowCooker, $scope.peanutSauce);
-
-  $scope.fernando = new cook(1000000004, "Fernando", "Alonso", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.fernandoMenu, "Mexican");
-  $scope.mickey = new cook(1000000001, "img/mickeyMouse.png", "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
-
-
-  $scope.chefArray = [$scope.shay, $scope.mickey, $scope.hernandez, $scope.fernando]
-});
 
 app.factory('checkoutFCTRL', function(){
   var pmntInfoCont= {};
@@ -755,8 +655,6 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     $scope.userInfo = new user();
     passUser.setData($scope.userInfo);
     $uibModalInstance.close($scope.selected.item);
-    console.log($( "#cookSide" ).get( 0 ));
-    console.log($( "#eatSide" ).get( 0 ));
     $( "#eatSide" ).addClass("ng-hide");
     $( "#cookSide" ).removeClass("ng-hide");
     window.location.href ="#cookServices";
@@ -769,7 +667,6 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
   };
   $scope.existingC = function () {
     $uibModalInstance.close($scope.selected.item);
-    console.log($( "#eatSide" ).get( 0 ));
     $( "#eatSide" ).addClass("ng-hide");
 
     $( "#cookSide" ).removeClass("ng-hide");
