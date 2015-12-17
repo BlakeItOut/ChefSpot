@@ -123,8 +123,8 @@
 }
 
 .checkoutPics {
-  max-height: 100px;
-  max-width: 100px;
+  max-height: 100%;
+  max-width: 100%;
   border: 10px solid white;
   text-align: center;
 }

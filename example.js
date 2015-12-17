@@ -169,11 +169,11 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
         e.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
     }
-    $geolocation.watchPosition({
-      // timeout: 60000,
-      maximumAge: 2,
-      enableHighAccuracy: true
-    });
+    // $geolocation.watchPosition({
+    //   // timeout: 60000,
+    //   maximumAge: 2,
+    //   enableHighAccuracy: true
+    // });
 
     });
        
@@ -410,7 +410,7 @@ app.controller('eatReservationsCTRL', function ($scope, $sce) {
   $scope.mickey = new cook(1000000001, "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
   
   $scope.chimi = new dish("Chicken Chimi in the Oven", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/chimi.jpg");
-  $scope.Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/fishtacos.jpg");
+  $scope.Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/fishtacos2.jpg");
   $scope.fishTacos = new dish("Fish Tacos", 700, ["Curry", "Meat", "Chickpeas"], 8, "", "img/carni.jpg");
 
   $scope.hernandezMenu = new menu($scope.chimi, $scope.Carnitas, $scope.fishTacos);
@@ -468,6 +468,13 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
         }
       }
     });
+        modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
     $scope.closeE = function (size) {
 
     var modalInstance = $uibModal.open({
@@ -489,15 +496,9 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
     });
   };
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
 
   $scope.openC = function (size) {
-
+    console.log("fcerfcwfczwf");
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContentC.html',
@@ -509,6 +510,13 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
         }
       }
     });
+        modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
     $scope.closeC = function (size) {
 
     var modalInstance = $uibModal.open({
@@ -530,12 +538,6 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
     });
   };
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
 
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
@@ -606,7 +608,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     passUser.setData($scope.userInfo);
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).removeClass("ng-hide");
-    $( "#cookSide" ).addClass("ng-hide");
+    // $( "#cookSide" ).addClass("ng-hide");
     window.location.href ="#eatServices";
   };
   $scope.okC = function () {

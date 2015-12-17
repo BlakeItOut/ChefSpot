@@ -34,43 +34,43 @@ angular
                 return deferred.promise;
             },
 
-            watchPosition: function(options) {
-                if(supported()) {
-                    if(!this.watchId) {
-                        this.watchId = $window.navigator.geolocation.watchPosition(
-                            function(position) {
-                                $rootScope.$apply(function() {
-                                    retVal.position.coords = position.coords;
-                                    retVal.position.timestamp = position.timestamp;
-                                    delete retVal.position.error;
-                                    $rootScope.$broadcast('$geolocation.position.changed', position);
-                                });
-                            },
-                            function(error) {
-                                $rootScope.$apply(function() {
-                                    retVal.position.error = error;
-                                    delete retVal.position.coords;
-                                    delete retVal.position.timestamp;
-                                    $rootScope.$broadcast('$geolocation.position.error', error);
-                                });
-                            }, options);
-                    }
-                } else {
-                    retVal.position = {
-                        error: {
-                            code: 2,
-                            message: 'This web browser does not support HTML5 Geolocation'
-                        }
-                    };
-                }
-            },
+            // watchPosition: function(options) {
+            //     if(supported()) {
+            //         if(!this.watchId) {
+            //             this.watchId = $window.navigator.geolocation.watchPosition(
+            //                 function(position) {
+            //                     $rootScope.$apply(function() {
+            //                         retVal.position.coords = position.coords;
+            //                         retVal.position.timestamp = position.timestamp;
+            //                         delete retVal.position.error;
+            //                         $rootScope.$broadcast('$geolocation.position.changed', position);
+            //                     });
+            //                 },
+            //                 function(error) {
+            //                     $rootScope.$apply(function() {
+            //                         retVal.position.error = error;
+            //                         delete retVal.position.coords;
+            //                         delete retVal.position.timestamp;
+            //                         $rootScope.$broadcast('$geolocation.position.error', error);
+            //                     });
+            //                 }, options);
+            //         }
+            //     } else {
+            //         retVal.position = {
+            //             error: {
+            //                 code: 2,
+            //                 message: 'This web browser does not support HTML5 Geolocation'
+            //             }
+            //         };
+            //     }
+            // },
 
-            clearWatch: function() {
-                if(this.watchId) {
-                    $window.navigator.geolocation.clearWatch(this.watchId);
-                    delete this.watchId;
-                }
-            },
+            // clearWatch: function() {
+            //     if(this.watchId) {
+            //         $window.navigator.geolocation.clearWatch(this.watchId);
+            //         delete this.watchId;
+            //     }
+            // },
 
             position: {}
         };
