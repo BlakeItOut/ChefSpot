@@ -280,7 +280,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
 
 app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, chooseCook) {
   $scope.tabs[1].active = true;
-  $scope.chefsName = chooseCook.cook1 || "Sheharyar Khushnood";
+  $scope.chef = chooseCook.chef
   $scope.submitter= function(){
       $scope.input4 = $scope.chef
       if ($scope.radioModel === "Option 1") {
@@ -297,77 +297,8 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, 
         $scope.input3 = $scope.chef.menu.dish3.costPerServing*$scope.Servings3;
       }
       checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3, $scope.input4);
-      $location.path( '/checkout' );
-  }
-  function cook(cookID, cookPic, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
-    this.cookID = cookID;
-    this.cookPic = cookPic;
-    this.firstName = first;
-    this.lastName = last;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.lattitude = lattitude;
-    this.longitude = longitude
-    this.menu = menu;
-    this.mainCuisine = mainCusine;
   }
 
-  function menu(dish1, dish2, dish3) {
-    this.dish1 = dish1;
-    this.dish2 = dish2;
-    this.dish3 = dish3;
-  }
-
-  function dish(displayName, costPerServing, ingredients, maxServings, cuisineType, picture) {
-    this.displayName = displayName;
-    this.costPerServing = costPerServing;
-    this.ingredients = ingredients;
-    this.maxServings = maxServings;
-    this.cuisineType = cuisineType;
-    this.picture = picture;
-  }
-
-  $scope.chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani", "img/chickenBriyani.png");
-  $scope.spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian", "img/spinachPaneer.png");
-  $scope.chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian", "img/chanaMasala.png");
-
-  $scope.shayMenu = new menu($scope.chickenBriyani, $scope.spinichPaneer, $scope.chanaMasala);
-
-  $scope.shay = new cook(1000000001, "img/chefShay.png", "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.shayMenu, "Pakistani");
-
-  $scope.pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/pasta.jpeg");
-  $scope.chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/chickenscal.jpg");
-  $scope.venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/veneto.jpg");
-
-  $scope.mickeyMenu = new menu($scope.pasta, $scope.chickenScallopini, $scope.venetoChicken);
- $scope.mickey = new cook(1000000005, "img/mickeyMouse.png", "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.mickeyMenu, "Italian");
-  
-  $scope.chimi = new dish("Chicken Chimi in the Oven", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/chimi.jpg");
-$scope.Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/fishtacos.jpg");
-$scope.fishTacos = new dish("Fish Tacos", 700, ["Curry", "Meat", "Chickpeas"], 8, "Mexican", "img/carni.jpg");
-
-$scope.scarlettMenu = new menu($scope.chimi, $scope.Carnitas, $scope.fishTacos);
-
-$scope.scarlett = new cook(1000000003, "img/scarlett.jpg", "Scarlett", "Johansson", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.scarlettMenu, "Mexican");
-
-$scope.padThai = new dish("Pad Thai With Chicken and Shrimp", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/padthai.jpg");
-$scope.slowCooker = new dish("Slow Cooker Chicken ", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/slowcook.jpg");
-$scope.peanutSauce = new dish("Thai Noodles With Spicy Peanut Sauce", 700, ["Curry", "Meat", "Chickpeas"], 8, "Thai", "img/thainod.jpg");
-
-$scope.fernandoMenu = new menu($scope.padThai, $scope.slowCooker, $scope.peanutSauce);
-
-$scope.fernando = new cook(1000000004, "img/fernando.jpg", "Fernando", "Alonso", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, $scope.fernandoMenu, "Mexican");
-
-$scope.chefArray = [$scope.shay, $scope.mickey, $scope.fernando, $scope.scarlett];
-
-function setChef () {
-  for(i=0; i<$scope.chefArray.length; i++) {
-    if($scope.chefsName === ($scope.chefArray[i].firstName + " " + $scope.chefArray[i].lastName)) {
-      $scope.chef = $scope.chefArray[i];
-    }
-  }
-}
-setChef();
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUser, reservations) {
@@ -484,9 +415,75 @@ app.factory('checkoutFCTRL', function(){
 });
 
 app.factory('chooseCook', function(){
+    function cook(cookID, cookPic, first, last, email, phoneNumber, lattitude, longitude, menu, mainCusine) {
+    this.cookID = cookID;
+    this.cookPic = cookPic;
+    this.firstName = first;
+    this.lastName = last;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.lattitude = lattitude;
+    this.longitude = longitude
+    this.menu = menu;
+    this.mainCuisine = mainCusine;
+  }
+
+  function menu(dish1, dish2, dish3) {
+    this.dish1 = dish1;
+    this.dish2 = dish2;
+    this.dish3 = dish3;
+  }
+
+  function dish(displayName, costPerServing, ingredients, maxServings, cuisineType, picture) {
+    this.displayName = displayName;
+    this.costPerServing = costPerServing;
+    this.ingredients = ingredients;
+    this.maxServings = maxServings;
+    this.cuisineType = cuisineType;
+    this.picture = picture;
+  }
+
+var chickenBriyani = new dish("Chicken Briyani", 800, ["Chicken", "Rice", "Curry"], 4, "Pakistani", "img/chickenBriyani.png");
+var spinichPaneer = new dish("Spinich Paneer", 600, ["Spinich", "Crepe"], 6, "Indian", "img/spinachPaneer.png");
+var chanaMasala = new dish("Chana Masala", 700, ["Curry", "Meat", "Chickpeas"], 8, "Indian", "img/chanaMasala.png");
+
+var shayMenu = new menu(chickenBriyani, spinichPaneer, chanaMasala);
+
+var shay = new cook(1000000001, "img/chefShay.png", "Sheharyar", "Khushnood", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, shayMenu, "Pakistani");
+
+var pasta = new dish("Simple Spinach Pasta", 800, ["Chicken", "Rice", "Curry"], 4, "Italian", "img/pasta.jpeg");
+var chickenScallopini = new dish("Chicken Scallopini", 600, ["Spinich", "Crepe"], 6, "Italian", "img/chickenscal.jpg");
+var venetoChicken = new dish("Veneto Chicken", 700, ["Curry", "Meat", "Chickpeas"], 8, "Italian", "img/veneto.jpg");
+
+var mickeyMenu = new menu(pasta, chickenScallopini, venetoChicken);
+var mickey = new cook(1000000005, "img/mickeyMouse.png", "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, mickeyMenu, "Italian");
+  
+var chimi = new dish("Chicken Chimi in the Oven", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/chimi.jpg");
+var Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/fishtacos.jpg");
+var fishTacos = new dish("Fish Tacos", 700, ["Curry", "Meat", "Chickpeas"], 8, "Mexican", "img/carni.jpg");
+
+var scarlettMenu = new menu(chimi, Carnitas, fishTacos);
+
+var scarlett = new cook(1000000003, "img/scarlett.jpg", "Scarlett", "Johansson", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, scarlettMenu, "Mexican");
+
+var padThai = new dish("Pad Thai With Chicken and Shrimp", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/padthai.jpg");
+var slowCooker = new dish("Slow Cooker Chicken ", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/slowcook.jpg");
+var peanutSauce = new dish("Thai Noodles With Spicy Peanut Sauce", 700, ["Curry", "Meat", "Chickpeas"], 8, "Thai", "img/thainod.jpg");
+
+var fernandoMenu = new menu(padThai, slowCooker, peanutSauce);
+
+var fernando = new cook(1000000004, "img/fernando.jpg", "Fernando", "Alonso", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, fernandoMenu, "Mexican");
+
+var chefArray = [shay, mickey, fernando, scarlett];
+
   var cookName= {};
   cookName.setData = function(cook1){
-        this.cook1 = cook1; 
+        for(i=0; i<chefArray.length; i++) {
+          if(cook1 === (chefArray[i].firstName + " " + chefArray[i].lastName)) {
+            this.chef = chefArray[i];
+          }
+        } 
+        console.log(this.chef)
   }
   return cookName;
 });
