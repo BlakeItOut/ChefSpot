@@ -300,7 +300,7 @@ app.controller('eatMenuCTRL', function ($scope, $sce, checkoutFCTRL, chooseCook)
   }
 });
 
-app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUser, reservations) {
+app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUser, reservationMaker) {
     $scope.tabs[2].active = true;
     $scope.dish = checkoutFCTRL.input1 || ""; //Dish object
     $scope.input1=  $scope.dish.displayName || "Food Stuff"; //Dish Name
@@ -321,9 +321,10 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUse
     $scope.reservation.chef = $scope.chef;
     $scope.reservation.date = $scope.datePlusOne;
     $scope.reservation.dish = $scope.dish;
+    $scope.payment = $scope.input3*1.01
     $scope.confirm = function(){
       console.log($scope.reservations)
-      reservations.addReservation($scope.reservation);
+      reservationMaker.addReservation($scope.reservation);
       var handler = StripeCheckout.configure({
         key: 'pk_test_s1K2R5T90nTKpXtyZbQtg0o8',
         // image: '/img/documentation/checkout/marketplace.png',
@@ -340,25 +341,31 @@ app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUse
         name: $scope.input1,
         description: $scope.dishDescription,
         zipCode: true,
-        amount: checkoutFCTRL.input3
+        amount: $scope.payment
       });
   }
 });
 
-app.controller('eatReservationsCTRL', function ($scope, $sce, reservations) {
+app.controller('eatReservationsCTRL', function ($scope, $sce, reservationMaker) {
   $scope.tabs[3].active = true;
-  $scope.reservations = reservations;
+  $scope.reservations = reservationMaker.reservations;
+  $scope.date = new Date();
+
+  $scope.pastReservations = [
+  {displayName: "Fennel Risotto", date:$scope.date.setDate($scope.date.getDate() - 2), lastName: "Batelli"},
+  {displayName: "Lobster Bisque", date:$scope.date.setDate($scope.date.getDate() - 10), lastName: "Wolfgang"},
+  {displayName: "BBQ Ribs", date:$scope.date.setDate($scope.date.getDate() - 15), lastName: "Crockett"}
+  ]
 });
 
-app.factory('reservations', function(){
-  var reservations = {};
-  var counter = 0;
-  reservations.addReservation = function(newReservation){
-    counter++;
-    this[counter] = newReservation;
-    console.log(reservations);          
+app.factory('reservationMaker', function(){
+  var reservationMaker = {};
+  reservationMaker.reservations = [];
+  reservationMaker.addReservation = function(newReservation){
+    reservationMaker.reservations.push(newReservation);
+    console.log(reservationMaker.reservations);          
   }
-  return reservations;
+  return reservationMaker;
 });
 
 app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {

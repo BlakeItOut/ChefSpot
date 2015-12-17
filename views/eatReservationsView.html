@@ -1,18 +1,52 @@
-<br>
 <div id="upcomingReservations">
 	<h1>Upcoming</h1>
-	<div ng-repeat = "reservation in reservations" class = "reservationButton">
+	<div class= "row" id="reserveHeaders">
+		<div class = "col-md-4 underline">
+			Dish
+		</div>
+		<div class = "col-md-4 underline">
+			Date
+		</div>
+		<div class = "col-md-4 underline">
+			Chef
+		</div>
+	</div>
+	<div ng-repeat = "reservation in reservations" class = "row reservationButton">
 		<div class = "col-md-4">
-			{{reservation.displayName}}
+			{{reservation.dish.displayName}}
 		</div>
 		<div class = "col-md-4">
-			on {{reservation.date | date:'fullDate'}}
+			On {{reservation.date | date:'fullDate'}}
 		</div>
 		<div class = "col-md-4">
 			With Chef {{reservation.chef.lastName}}
 		</div>
 	</div>
 </div>
+<br>
 <div id="pastReservations">
 	<h1>Past</h1>
+	<div class= "row" id="reserveHeaders">
+		<div class = "col-md-4 underline">
+			Dish
+		</div>
+		<div class = "col-md-4 underline">
+			Date
+		</div>
+		<div class = "col-md-4 underline">
+			Chef
+		</div>
+	</div>
+	<div ng-repeat = "pastReservation in pastReservations" class = "reservationButton row">
+		<div class = "col-md-4">
+			{{pastReservation.displayName}}
+		</div>
+		<div class = "col-md-4">
+			On {{pastReservation.date | date:'fullDate'}}
+		</div>
+		<div class = "col-md-4">
+			With Chef {{pastReservation.lastName}}
+		</div>
+	</div>
+	<div id="reservationBottom" class="row"></div>
 </div>
