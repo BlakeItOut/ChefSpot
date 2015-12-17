@@ -278,11 +278,11 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
     //console.log(cookget);
   });
 
-app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, chooseCook) {
+app.controller('eatMenuCTRL', function ($scope, $sce, checkoutFCTRL, chooseCook) {
   $scope.tabs[1].active = true;
-  $scope.chef = chooseCook.chef
+  $scope.chef = chooseCook.chef;
   $scope.submitter= function(){
-      $scope.input4 = $scope.chef
+      $scope.input4 = $scope.chef;
       if ($scope.radioModel === "Option 1") {
         $scope.input1 = $scope.chef.menu.dish1;
         $scope.input2 = $scope.Servings1;
@@ -290,7 +290,7 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, 
       } else if ($scope.radioModel === "Option 2") {
         $scope.input1 = $scope.chef.menu.dish2;
         $scope.input2 = $scope.Servings2;
-        $scope.input3 = $scope.chef.menu.dish2.costPerServing*$scope.Servings2  
+        $scope.input3 = $scope.chef.menu.dish2.costPerServing*$scope.Servings2;  
       } else if ($scope.radioModel === "Option 3") {
         $scope.input1 = $scope.chef.menu.dish3;
         $scope.input2 = $scope.Servings3;
@@ -298,7 +298,6 @@ app.controller('eatMenuCTRL', function ($scope, $sce, $location, checkoutFCTRL, 
       }
       checkoutFCTRL.setData($scope.input1, $scope.input2, $scope.input3, $scope.input4);
   }
-
 });
 
 app.controller('eatCheckoutCTRL', function ($scope, $sce, checkoutFCTRL, passUser, reservations) {
@@ -356,7 +355,8 @@ app.factory('reservations', function(){
   var counter = 0;
   reservations.addReservation = function(newReservation){
     counter++;
-    this[counter] = newReservation;            
+    this[counter] = newReservation;
+    console.log(reservations);          
   }
   return reservations;
 });
@@ -483,7 +483,6 @@ var chefArray = [shay, mickey, fernando, scarlett];
             this.chef = chefArray[i];
           }
         } 
-        console.log(this.chef)
   }
   return cookName;
 });
@@ -498,7 +497,7 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'myModalContent.html',
+      templateUrl: 'modals/myModalContent.html',
       controller: 'ModalInstanceCtrl',
       size: size,
       resolve: {
@@ -540,7 +539,7 @@ app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
     console.log("fcerfcwfczwf");
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'myModalContentC.html',
+      templateUrl: 'modals/myModalContentC.html',
       controller: 'ModalInstanceCtrl',
       size: size,
       resolve: {
