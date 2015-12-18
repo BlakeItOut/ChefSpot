@@ -19,5 +19,8 @@
   "homepage": "https://github.com/blakes3489/ChefSpot#readme",
   "dependencies": {
     "express": "^4.13.3"
+  },
+  "engines": {
+    "node": "4.1.2"  //run node -v in terminal to get your version
   }
 }
