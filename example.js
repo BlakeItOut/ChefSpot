@@ -673,7 +673,6 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
   $scope.existingC = function () {
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).addClass("ng-hide");
-
     $( "#cookSide" ).removeClass("ng-hide");
     window.location.href ="#cookServices";
   };
