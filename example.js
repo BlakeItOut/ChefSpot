@@ -386,6 +386,7 @@ app.controller('eatUserProfileCTRL', function ($scope, $sce, passUser) {
   $scope.eatCity = $scope.user.city || "";
   $scope.eatState = $scope.user.state || "";
   $scope.eatZipCode = $scope.user.zipCode || "";
+  $scope.eatNumber = $scope.user.phone || "";
   $scope.cuisines = $scope.user.cuisines || [
     {name: 'American', chosen: false},
     {name:'Canadian', chosen: false},
@@ -474,8 +475,8 @@ var mickeyMenu = new menu(pasta, chickenScallopini, venetoChicken);
 var mickey = new cook(1000000005, "img/mickeyMouse.png", "Mickey", "Mouse", "sherryBaby@gmail.com", "3133118008", 42.3314, 83.0458, mickeyMenu, "Italian");
 
 var chimi = new dish("Chicken Chimi in the Oven", 800, ["Chicken", "Rice", "Curry"], 4, "Mexican", "img/chimi.jpg");
-var Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/fishtacos.jpg");
-var fishTacos = new dish("Fish Tacos", 700, ["Curry", "Meat", "Chickpeas"], 8, "Mexican", "img/carni.jpg");
+var Carnitas = new dish("Slow Cooker Carnitas", 600, ["Spinich", "Crepe"], 6, "Mexican", "img/carni.jpg");
+var fishTacos = new dish("Fish Tacos", 700, ["Curry", "Meat", "Chickpeas"], 8, "Mexican", "img/fishtacos2.jpg");
 
 var scarlettMenu = new menu(chimi, Carnitas, fishTacos);
 
@@ -609,7 +610,13 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
   $scope.selected = {
     item: $scope.items[0]
   };
-
+  $scope.eatLastName = "Schmo";
+  $scope.eatEmail = "selfietastic@gmail.com";
+  $scope.eatStreetAddress = "313 Grand Circus Center";
+  $scope.eatCity = "The Detroit City";
+  $scope.eatState = "MI";
+  $scope.eatZipCode = "12345";
+  $scope.eatNumber = "(313) 123-4567";
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
@@ -652,6 +659,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     this.city = $scope.eatCity || "",
     this.state = $scope.eatState || "",
     this.zipCode = $scope.eatZipCode || "",
+    this.phone = $scope.eatNumber || "",
     this.cuisines = $scope.cuisines || []
   }
 

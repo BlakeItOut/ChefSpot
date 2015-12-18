@@ -193,6 +193,7 @@ ul {
 #userForm {
   background-color: white;
   padding: 40px;
+  width: 100%;
 }
 
 #userForm input {
@@ -256,7 +257,7 @@ ul {
     border-top: 3px solid;
 }
 
-.form-group{
+#cookAvailability{
     width: 50%;
     margin: 0 auto;
 }
