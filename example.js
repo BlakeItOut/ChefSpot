@@ -136,16 +136,24 @@ app.controller('cookMenuSetCTRL', function(createCookMenuF){
 })
 
 app.controller('cookAvailabilityCTRL', function(){
-  $('#demo').daterangepicker({
-    "singleDatePicker": true,
-    "timePicker": true,
-    "timePickerSeconds": true,
-    "startDate": "12/09/2015",
-    "endDate": "12/15/2015",
-    "opens": "center"
-}, function(start, end, label) {
-  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-});
+
+  self = this;
+  self.someProp = 'Check This value displays.. confirms controller initalised'
+  self.opened = {};
+  self.open = function($event) {
+
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    self.opened = {};
+    self.opened[$event.target.id] = true;
+
+    // log this to check if its setting the log    
+    console.log(self.opened);
+    
+  };
+
+  self.format = 'dd-MM-yyyy'
 
 })
 
@@ -174,7 +182,7 @@ app.controller('eatCooksCTRL', function ($scope, $geolocation, chooseCook) {
 var cooks = [
     {
         name : 'Sheharyar Khushnood',
-        cuisine : 'Chinese',
+        cuisine : 'Pakistani',
         lat : 42.7000,
         long : -83.4000
     },
@@ -233,7 +241,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
         google.maps.event.addListener(marker, 'click', function(){
             var cookTitle = marker.title;
             chooseCook.setData(cookTitle);
-            infoWindow.setContent("<a href='#/menu' ng-click='cookget()'>" + cookTitle + '</a>' + marker.content);
+            infoWindow.setContent("<a href='#/menu#eatServices' ng-click='cookget()'>" + cookTitle + '</a>' + marker.content);
             infoWindow.open($scope.map, marker);
 
             // console.log(google.maps.event.marker)
@@ -653,8 +661,8 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     passUser.setData($scope.userInfo);
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).removeClass("ng-hide");
-    // $( "#cookSide" ).addClass("ng-hide");
-    window.location.href ="#eatServices";
+    $( "#cookSide" ).addClass("ng-hide");
+    window.location.href ="#/#eatServices";
   };
   $scope.okC = function () {
     $scope.userInfo = new user();
@@ -662,19 +670,19 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).addClass("ng-hide");
     $( "#cookSide" ).removeClass("ng-hide");
-    window.location.href ="#cookServices";
+    window.location.href ="#/MenuSet#cookServices";
   };
   $scope.existingE = function () {
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).removeClass("ng-hide");
     $( "#cookSide" ).addClass("ng-hide");
-    window.location.href ="#eatServices";
+    window.location.href ="#/#eatServices";
   };
   $scope.existingC = function () {
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).addClass("ng-hide");
     $( "#cookSide" ).removeClass("ng-hide");
-    window.location.href ="#cookServices";
+    window.location.href ="#/MenuSet#cookServices";
   };
 });
 

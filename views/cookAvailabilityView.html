@@ -1,8 +1,47 @@
+<div ng-controller="cookAvailabilityCTRL">
+<style>
+  #dateFrom, #dateTo { width: 200px;} , 
+</style>
 
-<input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+  {{ demo.someProp }}
 
-<script type="text/javascript">
-$(function() {
-    $('input[name="daterange"]').daterangepicker();
-});
-</script>
+  <div class="form-group">
+
+      <div class="input-group">
+      
+          <input type="text" 
+            class="form-control date" 
+            id="dateFrom" 
+            placeholder="From" 
+            ng-click="demo.dateFrom=true"
+            datepicker-popup="{{demo.format}}" 
+            ng-model="demo.dtFrom" 
+            is-open="demo.dateFrom" 
+            min-date="minDate" 
+            max-date="'2015-06-22'" 
+            datepicker-options="demo.dateOptions" 
+            date-disabled="disabled(date, mode)" 
+            ng-required="true" 
+            close-text="Close" >
+          
+          
+          <input type="text" 
+            class="form-control date" 
+            id="dateTo"   
+            placeholder="To" 
+            ng-click="demo.dateTo=true" 
+            datepicker-popup="{{demo.format}}" 
+            ng-model="demo.dtTo" 
+            is-open="demo.dateTo" 
+            min-date="minDate" 
+            max-date="'2015-06-22'" 
+            datepicker-options="demo.dateOptions" 
+            date-disabled="disabled(date, mode)" 
+            ng-required="true" 
+            close-text="Close" >
+            
+      </div>
+
+  </div>
+  
+</div>
