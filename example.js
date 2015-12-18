@@ -182,7 +182,7 @@ app.controller('eatCooksCTRL', function ($scope, $geolocation, chooseCook) {
 var cooks = [
     {
         name : 'Sheharyar Khushnood',
-        cuisine : 'Chinese',
+        cuisine : 'Pakistani',
         lat : 42.7000,
         long : -83.4000
     },
@@ -241,7 +241,7 @@ $scope.coords = $geolocation.position.coords; // this is regularly updated
         google.maps.event.addListener(marker, 'click', function(){
             var cookTitle = marker.title;
             chooseCook.setData(cookTitle);
-            infoWindow.setContent("<a href='#/menu' ng-click='cookget()'>" + cookTitle + '</a>' + marker.content);
+            infoWindow.setContent("<a href='#/menu#eatServices' ng-click='cookget()'>" + cookTitle + '</a>' + marker.content);
             infoWindow.open($scope.map, marker);
 
             // console.log(google.maps.event.marker)
@@ -661,8 +661,8 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     passUser.setData($scope.userInfo);
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).removeClass("ng-hide");
-    // $( "#cookSide" ).addClass("ng-hide");
-    window.location.href ="#eatServices";
+    $( "#cookSide" ).addClass("ng-hide");
+    window.location.href ="#/#eatServices";
   };
   $scope.okC = function () {
     $scope.userInfo = new user();
@@ -670,20 +670,20 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, 
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).addClass("ng-hide");
     $( "#cookSide" ).removeClass("ng-hide");
-    window.location.href ="#cookServices";
+    window.location.href ="#/MenuSet#cookServices";
   };
   $scope.existingE = function () {
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).removeClass("ng-hide");
     $( "#cookSide" ).addClass("ng-hide");
-    window.location.href ="#eatServices";
+    window.location.href ="#/#eatServices";
   };
   $scope.existingC = function () {
     $uibModalInstance.close($scope.selected.item);
     $( "#eatSide" ).addClass("ng-hide");
 
     $( "#cookSide" ).removeClass("ng-hide");
-    window.location.href ="#cookServices";
+    window.location.href ="#/MenuSet#cookServices";
   };
 });
 

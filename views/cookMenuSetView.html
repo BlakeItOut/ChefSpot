@@ -1,39 +1,42 @@
-<select name="Menu" multiple="multiple">
-  <option>MealSlot1</option>
-  <option selected="selected">MealSlot2</option>
-  <option>MealSlot3</option>
- 
 
-
-<form>
-	<div class="form-cookGroup">
-        <label>Meal Name: </label>
-        <input type="text" ng-model="cookMealName"  tooltip-trigger="focus"/>
+<div class="modal-body">
+  <form id="userForm" role="form">
+    <div class = "row">
+      <div class = "col-md-4 rightText">Meal Name: </div>
+      <div class = "col-md-8 leftText">
+        <input type="text" ng-model="eatFirstName" uib-tooltip="People call you this" tooltip-trigger="focus"/>
       </div>
-
-       <div class="form-cookGroup">
-        <label>Max Servings: </label>
-        <input type="text" ng-model="cookServings"  tooltip-trigger="focus"/>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4 rightText">Max Servings: </div>
+      <div class = "col-md-8 leftText">
+        <input type="text" ng-model="eatLastName" uib-tooltip="And sometimes add this" tooltip-trigger="focus"/>
       </div>
-
-      <div class="form-cookGroup">
-        <label>Price per Serving: </label>
-        <input type="text" ng-model="cookServings"  tooltip-trigger="focus"/>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4 rightText">Cost per Serving: </div>
+      <div class = "col-md-8 leftText">
+        <input type="text" ng-model="eatEmail" uib-tooltip="You get electronic communications via this method" tooltip-trigger="focus"/>
       </div>
-
-      <div class="form-cookGroup">
-        <label>Picture: </label>
-        <input type="text" ng-model="cookMealImage"  tooltip-trigger="focus"/>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4 rightText">Picture:  </div>
+      <div class = "col-md-8 leftText">
+        <input type="text" ng-model="eatStreetAddress" uib-tooltip="This number and name determine where on what line you reside" tooltip-trigger="focus"/>
       </div>
-	
- <!-- modal content for multiple string line input? -->
-      <div class="form-cookGroup">
-        <label>Ingreidents: </label>
-        <input type="text" ng-model="cookMealIngredients"  tooltip-trigger="focus"/>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4 rightText">Ingreidents:  </div>
+      <div class = "col-md-8 leftText">
+        <input type="text" ng-model="eatCity" uib-tooltip="In this region" tooltip-trigger="focus"/>
       </div>
-
-      <div class="form-cookGroup">
-        <label>Cusine: </label>
-        <input type="text" ng-model="cookMealCuisines"  tooltip-trigger="focus"/>
-
-</form>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4 rightText">Cusine Type:  </div>
+      <div class = "col-md-8 leftText">
+        <input type="text" ng-model="eatState" uib-tooltip="One of 50 or so" tooltip-trigger="focus"/>
+      </div>
+    </div>
+  <a href="www.essquare.co">Add more(+)</a>
+  </div>
+  
